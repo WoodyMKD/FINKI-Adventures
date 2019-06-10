@@ -15,6 +15,7 @@ namespace FINKI_Adventures
         public Form1()
         {
             InitializeComponent();
+            DoubleBuffered = true;
         }
     }
 }
