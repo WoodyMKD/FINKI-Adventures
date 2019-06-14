@@ -12,13 +12,15 @@ namespace FINKI_Adventures
     enum Level
     {
         Kampus_Dvor = 1,
-        Baraki = 2
+        Baraki = 2,
+        VP_Ispit = 3
     }
 
     class Scene
     {
         public Level currentLevel { get; set; }
         public Player player { get; }
+        public List<Bullet> ammo { get; }
 
         private Panel Map;
         private Bitmap currentMap = null;
@@ -29,7 +31,7 @@ namespace FINKI_Adventures
         {
             this.Map = Map;
             player = new Player();
-
+            ammo = new List<Bullet>();
             // Initialize the first level
             currentMap = Properties.Resources.kampus_dvor;
             currentLevel = Level.Kampus_Dvor;
@@ -40,6 +42,10 @@ namespace FINKI_Adventures
         {
             // Draw the player
             player.Animate(g);
+            foreach (Bullet bullet in ammo)
+            {
+                bullet.Animate(g);
+            }
         }
 
         public void moveMap()

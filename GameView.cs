@@ -68,24 +68,40 @@ namespace FINKI_Adventures
                 if (e.KeyCode == Keys.Left || e.KeyCode == Keys.A)
                 {
                     gameScene.MovePlayerLeft();
+                    if (e.KeyCode == Keys.Space)
+                    {
+                        gameScene.ammo.Add(new Bullet("left", gameScene.player));
+                    }
                 }
 
                 // Right Arrow Key is pressed
                 if (e.KeyCode == Keys.Right || e.KeyCode == Keys.D)
                 {
                     gameScene.MovePlayerRight();
+                    if (e.KeyCode == Keys.Space)
+                    {
+                        gameScene.ammo.Add(new Bullet("right", gameScene.player));
+                    }
                 }
 
                 // Up Arrow Key is pressed
                 if (e.KeyCode == Keys.Up || e.KeyCode == Keys.W)
                 {
                     gameScene.MovePlayerUp();
+                    if (e.KeyCode == Keys.Space)
+                    {
+                        gameScene.ammo.Add(new Bullet("up", gameScene.player));
+                    }
                 }
 
                 // Down Arrow Key is pressed
                 if (e.KeyCode == Keys.Down || e.KeyCode == Keys.S)
                 {
                     gameScene.MovePlayerDown();
+                    if (e.KeyCode == Keys.Space)
+                    {
+                        gameScene.ammo.Add(new Bullet("down", gameScene.player));
+                    }
                 }
             }
         }
