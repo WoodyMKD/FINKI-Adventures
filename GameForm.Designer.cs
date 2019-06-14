@@ -48,7 +48,6 @@
             // 
             this.gamePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gamePanel.BackColor = System.Drawing.SystemColors.ControlText;
-            this.gamePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.gamePanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.gamePanel.Location = new System.Drawing.Point(317, 156);
             this.gamePanel.Name = "gamePanel";
@@ -91,7 +90,7 @@
             this.closeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.closeButton.TabIndex = 2;
             this.closeButton.TabStop = false;
-            this.closeButton.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // lb_level
             // 

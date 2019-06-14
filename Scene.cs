@@ -23,13 +23,14 @@ namespace FINKI_Adventures
         private Panel Map;
         private Bitmap currentMap = null;
 
-        public int mapBottomY = 1480;
+        public int mapBottomY = 1480; // Helper variable to track the map
 
         public Scene(Panel Map)
         {
             this.Map = Map;
             player = new Player();
 
+            // Initialize the first level
             currentMap = Properties.Resources.kampus_dvor;
             currentLevel = Level.Kampus_Dvor;
             Map.BackgroundImage = currentMap;
@@ -37,13 +38,15 @@ namespace FINKI_Adventures
 
         public void Draw(Graphics g)
         {
+            // Draw the player
             player.Animate(g);
         }
 
         public void moveMap()
         {
-            if(Map.Location.Y <= -10)
+            if(Map.Location.Y <= -10) // if it didn't reach the end
             {
+                // Move the map by 2 px vertically
                 Map.Location = new Point(Map.Location.X, Map.Location.Y + 2);
                 mapBottomY -= 2;
             }

@@ -20,11 +20,13 @@ namespace FINKI_Adventures
 
         public void Draw(Graphics g, float x, float y, float width, float height)
         {
+            // Draw the current animation sprite
             g.DrawImage(spriteImages[index], x, y, width, height);
         }
 
         public void nextImage()
         {
+            // Iterate through next image
             if (index < spriteImages.Length - 1)
             {
                 ++index;
@@ -33,6 +35,7 @@ namespace FINKI_Adventures
 
         public void Restart()
         {
+            // Restart animation sprite index
             index = 0;
         }
 

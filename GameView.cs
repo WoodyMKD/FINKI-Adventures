@@ -22,17 +22,18 @@ namespace FINKI_Adventures
         public GameView(GameForm gameForm)
         {
             InitializeComponent();
-            SetStyle(ControlStyles.DoubleBuffer, true);
 
+            // Trick for doubleBuffering panel
+            SetStyle(ControlStyles.DoubleBuffer, true);
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, sceneControl, new object[] { true });
 
             this.gameForm = gameForm;
-
             AllAnimations.InitializeAnimations();
-
             this.gameScene = new Scene(sceneControl);
-            menuPanel.Location = new Point(0, gameScene.mapBottomY - 700);
+            
+            menuPanel.Location = new Point(0, gameScene.mapBottomY - 700); // Adjust the location of the menu
 
+            // Main timer for the game
             sceneTimer = new Timer();
             sceneTimer.Tick += new EventHandler(sceneTimer_Tick);
             sceneTimer.Interval = 50;
@@ -96,14 +97,16 @@ namespace FINKI_Adventures
 
             if(isInGame)
             {
-                gameScene.moveMap();
+                gameScene.moveMap(); // Scroll the map vertically
 
+                // Iterate through animation sprites
                 if (--animationTick <= 0)
                 {
                     AllAnimations.nextImage();
                     animationTick = 2;
                 }
 
+                // If the map has "eaten" the player
                 if (gameScene.player.Y > gameScene.mapBottomY - 10)
                 {
                     gameScene.resetLevel();
@@ -115,7 +118,6 @@ namespace FINKI_Adventures
         private void btn_newgame_Click(object sender, EventArgs e)
         {
             gameScene.resetLevel();
-
             closeMenu();
         }
 
@@ -129,7 +131,7 @@ namespace FINKI_Adventures
         {
             Cursor.Show();
             isInGame = false;
-            menuPanel.Location = new Point(0, gameScene.mapBottomY - 700);
+            menuPanel.Location = new Point(0, gameScene.mapBottomY - 700); // Adjust the location of the menu
             menuPanel.Show();
         }
 
@@ -142,8 +144,9 @@ namespace FINKI_Adventures
 
         private void sceneControl_Paint(object sender, PaintEventArgs e)
         {
+            // Repaint the main game panel (scene)
             Graphics g = e.Graphics;
-            gameScene.Draw(g);
+            gameScene.Draw(g); 
         }
     }
 }
