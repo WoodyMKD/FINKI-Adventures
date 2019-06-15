@@ -49,10 +49,9 @@
             this.gamePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gamePanel.BackColor = System.Drawing.SystemColors.ControlText;
             this.gamePanel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gamePanel.Location = new System.Drawing.Point(423, 192);
-            this.gamePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gamePanel.Location = new System.Drawing.Point(317, 156);
             this.gamePanel.Name = "gamePanel";
-            this.gamePanel.Size = new System.Drawing.Size(184, 114);
+            this.gamePanel.Size = new System.Drawing.Size(138, 93);
             this.gamePanel.TabIndex = 0;
             // 
             // formPanel
@@ -64,9 +63,8 @@
             this.formPanel.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.formPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.formPanel.Location = new System.Drawing.Point(0, 0);
-            this.formPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.formPanel.Name = "formPanel";
-            this.formPanel.Size = new System.Drawing.Size(1067, 31);
+            this.formPanel.Size = new System.Drawing.Size(800, 25);
             this.formPanel.TabIndex = 1;
             // 
             // lbl_formPanel
@@ -76,9 +74,8 @@
             this.lbl_formPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_formPanel.ForeColor = System.Drawing.SystemColors.Control;
             this.lbl_formPanel.Location = new System.Drawing.Point(0, 0);
-            this.lbl_formPanel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_formPanel.Name = "lbl_formPanel";
-            this.lbl_formPanel.Size = new System.Drawing.Size(200, 26);
+            this.lbl_formPanel.Size = new System.Drawing.Size(166, 22);
             this.lbl_formPanel.TabIndex = 3;
             this.lbl_formPanel.Text = "FINKI Adventures";
             // 
@@ -87,10 +84,9 @@
             this.closeButton.BackColor = System.Drawing.Color.Transparent;
             this.closeButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.closeButton.Image = global::FINKI_Adventures.Properties.Resources.close_btn;
-            this.closeButton.Location = new System.Drawing.Point(1034, 0);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.closeButton.Location = new System.Drawing.Point(775, 0);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(33, 31);
+            this.closeButton.Size = new System.Drawing.Size(25, 25);
             this.closeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.closeButton.TabIndex = 2;
             this.closeButton.TabStop = false;
@@ -103,9 +99,8 @@
             this.lb_level.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_level.ForeColor = System.Drawing.Color.Gray;
             this.lb_level.Location = new System.Drawing.Point(0, 0);
-            this.lb_level.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_level.Name = "lb_level";
-            this.lb_level.Size = new System.Drawing.Size(377, 62);
+            this.lb_level.Size = new System.Drawing.Size(283, 50);
             this.lb_level.TabIndex = 2;
             this.lb_level.Text = "Ниво: Кампус";
             this.lb_level.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -117,10 +112,9 @@
             this.levelPanel.Controls.Add(this.lb_points);
             this.levelPanel.Controls.Add(this.lb_level);
             this.levelPanel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.levelPanel.Location = new System.Drawing.Point(5, 123);
-            this.levelPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.levelPanel.Location = new System.Drawing.Point(4, 100);
             this.levelPanel.Name = "levelPanel";
-            this.levelPanel.Size = new System.Drawing.Size(1045, 62);
+            this.levelPanel.Size = new System.Drawing.Size(784, 50);
             this.levelPanel.TabIndex = 1;
             // 
             // lb_points
@@ -129,10 +123,9 @@
             this.lb_points.Dock = System.Windows.Forms.DockStyle.Right;
             this.lb_points.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_points.ForeColor = System.Drawing.Color.Gray;
-            this.lb_points.Location = new System.Drawing.Point(668, 0);
-            this.lb_points.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_points.Location = new System.Drawing.Point(501, 0);
             this.lb_points.Name = "lb_points";
-            this.lb_points.Size = new System.Drawing.Size(377, 62);
+            this.lb_points.Size = new System.Drawing.Size(283, 50);
             this.lb_points.TabIndex = 3;
             this.lb_points.Text = "Поени: 0";
             this.lb_points.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -143,10 +136,9 @@
             this.helpPanel.BackColor = System.Drawing.Color.Black;
             this.helpPanel.Controls.Add(this.label2);
             this.helpPanel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.helpPanel.Location = new System.Drawing.Point(16, 314);
-            this.helpPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.helpPanel.Location = new System.Drawing.Point(12, 255);
             this.helpPanel.Name = "helpPanel";
-            this.helpPanel.Size = new System.Drawing.Size(1045, 62);
+            this.helpPanel.Size = new System.Drawing.Size(784, 50);
             this.helpPanel.TabIndex = 4;
             // 
             // label2
@@ -156,9 +148,8 @@
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
             this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1045, 62);
+            this.label2.Size = new System.Drawing.Size(784, 50);
             this.label2.TabIndex = 3;
             this.label2.Text = "Притиснете \"R\" за да го рестартирате нивото | Притиснете \"ESC\" за да го отворите " +
     "менито";
@@ -166,17 +157,16 @@
             // 
             // GameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::FINKI_Adventures.Properties.Resources.form_bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.helpPanel);
             this.Controls.Add(this.levelPanel);
             this.Controls.Add(this.formPanel);
             this.Controls.Add(this.gamePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GameForm";
             this.Text = "Form1";
             this.TransparencyKey = System.Drawing.Color.White;

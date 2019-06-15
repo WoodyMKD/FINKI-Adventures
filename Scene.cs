@@ -57,6 +57,27 @@ namespace FINKI_Adventures
         public void createBullet(Player player)
         {
             Bullet firedBullet = new Bullet(player.Direction, player);
+            if (player.Direction == "left")
+            {
+                firedBullet.X -= 45;
+                firedBullet.Y -= 15;
+            }
+            if (player.Direction == "right")
+            {
+                firedBullet.X += 35;
+                firedBullet.Y -= 10;
+            }
+            if (player.Direction == "up")
+            {
+                firedBullet.X -= 10;
+                firedBullet.Y -= 45;
+            }
+            if (player.Direction == "down")
+            {
+                firedBullet.X -= 15;
+                firedBullet.Y += 35;
+            }
+
             this.activeBullets.Add(firedBullet);
             Console.WriteLine("Created");
         }
