@@ -20,7 +20,7 @@ namespace FINKI_Adventures
     {
         public Level currentLevel { get; set; }
         public Player player { get; }
-        public List<Bullet> ammo { get; }
+        public List<Bullet> activeBullets { get; }
 
         private Panel Map;
         private Bitmap currentMap = null;
@@ -31,7 +31,8 @@ namespace FINKI_Adventures
         {
             this.Map = Map;
             player = new Player();
-            ammo = new List<Bullet>();
+            activeBullets = new List<Bullet>();
+
             // Initialize the first level
             currentMap = Properties.Resources.kampus_dvor;
             currentLevel = Level.Kampus_Dvor;
@@ -42,9 +43,29 @@ namespace FINKI_Adventures
         {
             // Draw the player
             player.Animate(g);
-            foreach (Bullet bullet in ammo)
+
+            //Console.WriteLine("ActiveBullets: " + activeBullets.Count);
+
+            // Draw bullets
+            foreach (Bullet bullet in activeBullets)
             {
+                Console.WriteLine("Bullet " + bullet.Direction);
                 bullet.Animate(g);
+            }
+        }
+
+        public void createBullet(Player player)
+        {
+            Bullet firedBullet = new Bullet(player.Direction, player);
+            this.activeBullets.Add(firedBullet);
+            Console.WriteLine("Created");
+        }
+
+        public void moveBullets()
+        {
+            foreach (Bullet bullet in activeBullets)
+            {
+                bullet.Move();
             }
         }
 

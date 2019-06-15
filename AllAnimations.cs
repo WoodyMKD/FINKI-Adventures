@@ -14,6 +14,8 @@ namespace FINKI_Adventures
         public static Animation main_down;
         public static Animation main_left;
         public static Animation main_right;
+        
+        public static Animation bullet;
 
         public static void InitializeAnimations()
         {
@@ -33,15 +35,23 @@ namespace FINKI_Adventures
             main_right = new Animation(new Bitmap[] {
                 Properties.Resources.right
             }, true);
+
+
+            //Bullet
+            bullet = new Animation(new Bitmap[] {
+                Properties.Resources.bullet
+            }, true);
         }
 
         public static void nextImage()
         {
             // Iterate through the next image
+            /*
             main_up.nextImage();
             main_down.nextImage();
             main_left.nextImage();
             main_right.nextImage();
+            */
         }
     }
 }

@@ -16,6 +16,7 @@ namespace FINKI_Adventures
         public float height { get; set; }
 
         public Animation animation;
+        public string Direction { get; set; }
         public int Health { get; set; }
         public int Velocity { get; set; }
         public int Score { get; set; }
@@ -27,6 +28,7 @@ namespace FINKI_Adventures
             this.width = 100;
             this.height = 100;
             animation = AllAnimations.main_up;
+            Direction = "up";
         }
 
         public void Animate(Graphics g)
@@ -42,6 +44,7 @@ namespace FINKI_Adventures
             if(animation != AllAnimations.main_left)
             {
                 animation = AllAnimations.main_left;
+                Direction = "left";
                 animation.Restart();
             }
             else
@@ -60,6 +63,7 @@ namespace FINKI_Adventures
             if (animation != AllAnimations.main_right)
             {
                 animation = AllAnimations.main_right;
+                Direction = "right";
                 animation.Restart();
             }
             else
@@ -78,6 +82,7 @@ namespace FINKI_Adventures
             if (animation != AllAnimations.main_up)
             {
                 animation = AllAnimations.main_up;
+                Direction = "up";
                 animation.Restart();
             }
             else
@@ -96,6 +101,7 @@ namespace FINKI_Adventures
             if (animation != AllAnimations.main_down)
             {
                 animation = AllAnimations.main_down;
+                Direction = "down";
                 animation.Restart();
             }
             else

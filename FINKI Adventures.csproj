@@ -128,5 +128,11 @@
   <ItemGroup>
     <None Include="Resources\btn_newgame.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bullet.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_bullet.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
