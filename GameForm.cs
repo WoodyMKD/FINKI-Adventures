@@ -15,7 +15,7 @@ namespace FINKI_Adventures
         public GameForm()
         {
             InitializeComponent();
-
+            DoubleBuffered = true;
             // Initialize panel sizes
             levelPanel.Size = new Size(1280, 50);
             helpPanel.Size = new Size(1280, 50);
