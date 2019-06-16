@@ -13,9 +13,9 @@ namespace FINKI_Adventures
         public Book()
         {
             this.Health = 150;
-            this.Velocity = 30;
+            this.Velocity = 5;
             this.X = 640;
-            this.Y = 1400;
+            this.Y = 300;
             this.width = 100;
             this.height = 100;
             dead = remove = false;

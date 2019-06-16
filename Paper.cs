@@ -13,9 +13,9 @@ namespace FINKI_Adventures
         public Paper()
         {
             this.Health = 250;
-            this.Velocity = 50;
+            this.Velocity = 10;
             this.X = 340;
-            this.Y = 1500;
+            this.Y = 400;
             this.width = 100;
             this.height = 100;
             dead = remove = false;

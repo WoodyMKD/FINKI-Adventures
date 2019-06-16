@@ -92,14 +92,14 @@ namespace FINKI_Adventures
         {
             Book book = new Book();
             Paper paper = new Paper();
-            if (player.Y == 500)
+            if (player.Y > 500)
             {
                 this.enemies.Add(book);
                 Console.WriteLine("Created");
             }
-            if (player.Y == 900)
+            if (player.Y > 900)
             {
-                this.enemies.Add(book);
+                this.enemies.Add(paper);
                 Console.WriteLine("Created");
             }
 
