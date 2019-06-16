@@ -17,6 +17,10 @@ namespace FINKI_Adventures
         
         public static Animation bullet;
 
+        public static Animation book;
+
+        public static Animation paper;
+
         public static void InitializeAnimations()
         {
             //Main character animation initialization
@@ -40,6 +44,14 @@ namespace FINKI_Adventures
             //Bullet
             bullet = new Animation(new Bitmap[] {
                 Properties.Resources.bullet
+            }, true);
+
+            //Enemies
+            book = new Animation(new Bitmap[] {
+                Properties.Resources.bullet//sprite should be changed
+            }, true);
+            paper = new Animation(new Bitmap[] {
+                Properties.Resources.bullet//sprite should be replaced with multiple paper sprites
             }, true);
         }
 

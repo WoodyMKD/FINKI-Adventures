@@ -32,6 +32,7 @@ namespace FINKI_Adventures
             this.gameScene = new Scene(sceneControl);
             
             menuPanel.Location = new Point(0, gameScene.mapBottomY - 700); // Adjust the location of the menu
+            gameScene.createEnemies(gameScene.player);
 
             // Main timer for the game
             sceneTimer = new Timer();
@@ -104,6 +105,7 @@ namespace FINKI_Adventures
             {
                 gameScene.moveMap(); // Scroll the map vertically
                 gameScene.moveBullets(); // Move current bullets on map
+                gameScene.moveEnemies(); // Move the enemies if they are created
 
                 // Iterate through animation sprites
                 if (--animationTick <= 0)

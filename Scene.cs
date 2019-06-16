@@ -21,6 +21,7 @@ namespace FINKI_Adventures
         public Level currentLevel { get; set; }
         public Player player { get; }
         public List<Bullet> activeBullets { get; }
+        public List<Enemy> enemies { get; }
 
         private Panel Map;
         private Bitmap currentMap = null;
@@ -32,6 +33,7 @@ namespace FINKI_Adventures
             this.Map = Map;
             player = new Player();
             activeBullets = new List<Bullet>();
+            enemies = new List<Enemy>();
 
             // Initialize the first level
             currentMap = Properties.Resources.kampus_dvor;
@@ -51,6 +53,11 @@ namespace FINKI_Adventures
             {
                 Console.WriteLine("Bullet " + bullet.Direction);
                 bullet.Animate(g);
+            }
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.Animate(g);
+                Console.WriteLine("Moved enemy");
             }
         }
 
@@ -81,12 +88,37 @@ namespace FINKI_Adventures
             this.activeBullets.Add(firedBullet);
             Console.WriteLine("Created");
         }
+        public void createEnemies(Player player)
+        {
+            Book book = new Book();
+            Paper paper = new Paper();
+            if (player.Y == 500)
+            {
+                this.enemies.Add(book);
+                Console.WriteLine("Created");
+            }
+            if (player.Y == 900)
+            {
+                this.enemies.Add(book);
+                Console.WriteLine("Created");
+            }
+
+
+            //Console.WriteLine("Created");
+        }
 
         public void moveBullets()
         {
             foreach (Bullet bullet in activeBullets)
             {
                 bullet.Move();
+            }
+        }
+        public void moveEnemies()
+        {
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.Move(player);
             }
         }
 
