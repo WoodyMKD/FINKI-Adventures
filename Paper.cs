@@ -16,8 +16,8 @@ namespace FINKI_Adventures
             this.Velocity = 10;
             this.X = 340;
             this.Y = 400;
-            this.width = 100;
-            this.height = 100;
+            this.width = 55;
+            this.height = 55;
             dead = remove = false;
             animation = AllAnimations.paper;//.paper sprites needed
         }

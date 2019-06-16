@@ -16,8 +16,8 @@ namespace FINKI_Adventures
             this.Velocity = 5;
             this.X = 640;
             this.Y = 300;
-            this.width = 100;
-            this.height = 100;
+            this.width = 70;
+            this.height = 70;
             dead = remove = false;
             animation = AllAnimations.book;//.book sprite needed
         }
