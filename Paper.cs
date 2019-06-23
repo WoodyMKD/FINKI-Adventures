@@ -8,7 +8,7 @@ namespace FINKI_Adventures
 {
     class Paper : Enemy
     {
-        public static int Reward = 10;
+        //public static int Reward = 10;
 
         public Paper()
         {
@@ -18,6 +18,7 @@ namespace FINKI_Adventures
             this.Y = 400;
             this.width = 55;
             this.height = 55;
+            Reward = 10;
             dead = remove = false;
             animation = AllAnimations.paper;//.paper sprites needed
         }

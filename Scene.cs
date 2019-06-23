@@ -112,6 +112,7 @@ namespace FINKI_Adventures
             foreach (Bullet bullet in activeBullets)
             {
                 bullet.Move();
+                bullet.remove = bullet.OutOfScene(Map.Top, Map.Bottom);//check map bounds
             }
         }
         public void moveEnemies()
@@ -119,6 +120,12 @@ namespace FINKI_Adventures
             foreach (Enemy enemy in enemies)
             {
                 enemy.Move(player);
+                enemy.dead = enemy.remove = enemy.Collision(player);
+                player.Score += enemy.Reward;
+                foreach(Bullet bullet in activeBullets)
+                {
+                    enemy.dead = enemy.remove = bullet.remove = enemy.Collision(bullet);
+                }
             }
         }
 

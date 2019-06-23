@@ -8,7 +8,7 @@ namespace FINKI_Adventures
 {
     class Book : Enemy
     {
-        public static int Reward = 5;
+        //public static int Reward = 5;
 
         public Book()
         {
@@ -18,6 +18,7 @@ namespace FINKI_Adventures
             this.Y = 300;
             this.width = 70;
             this.height = 70;
+            Reward = 5;
             dead = remove = false;
             animation = AllAnimations.book;//.book sprite needed
         }

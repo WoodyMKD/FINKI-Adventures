@@ -120,6 +120,24 @@ namespace FINKI_Adventures
                     gameScene.resetLevel();
                     openMenu();
                 }
+
+                //Collision detection removal of enemies
+                for (int i=gameScene.enemies.Count-1;i>=0;i--)
+                {
+                    if(gameScene.enemies[i].dead || gameScene.enemies[i].remove)
+                    {
+                        gameScene.enemies.RemoveAt(i);
+                    }
+                }
+
+                //Bullets removal
+                for(int i = gameScene.activeBullets.Count-1; i >= 0; i--)
+                {
+                    if (gameScene.activeBullets[i].remove)
+                    {
+                        gameScene.activeBullets.RemoveAt(i);
+                    }
+                }
             }
         }
 
