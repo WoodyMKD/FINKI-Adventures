@@ -14,6 +14,13 @@ namespace FINKI_Adventures
             LEFT, RIGHT, UP, DOWN
         }
 
+        public enum LEVELS
+        {
+            KAMPUS_DVOR = 1,
+            BARAKI = 2,
+            VP_ISPIT = 3
+        }
+
         // Map Constants
         public static readonly int mapLeftBound = 0;
         public static readonly int mapRightBound = 1280;

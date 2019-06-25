@@ -8,14 +8,7 @@ using System.Windows.Forms;
 
 namespace FINKI_Adventures
 {
-    enum Level
-    {
-        Kampus_Dvor = 1,
-        Baraki = 2,
-        VP_Ispit = 3
-    }
-
-    class Scene
+    public class Scene
     {
         // Visual Objects
         public Player player { get; }
@@ -25,7 +18,7 @@ namespace FINKI_Adventures
         // Current Game State
         private Panel Map { get; set; }
         private Bitmap currentMap { get; set; }
-        public Level currentLevel { get; set; }
+        public Constants.LEVELS currentLevel { get; set; }
 
         public Scene(Panel Map)
         {
@@ -37,7 +30,7 @@ namespace FINKI_Adventures
             // Initialize the starting game state
             this.Map = Map;
             this.currentMap = Properties.Resources.kampus_dvor;
-            this.currentLevel = Level.Kampus_Dvor;
+            this.currentLevel = Constants.LEVELS.KAMPUS_DVOR;
             this.Map.BackgroundImage = currentMap;
 
             // Update settings
@@ -69,23 +62,26 @@ namespace FINKI_Adventures
 
             if (player.Direction == Constants.DIRECTIONS.LEFT)
             {
-                firedBullet.PositionX -= 125;
-                firedBullet.PositionY -= 65;
+                firedBullet.PositionX -= 120;
+                firedBullet.PositionY -= 52;
             }
+
             if (player.Direction == Constants.DIRECTIONS.RIGHT)
             {
-                firedBullet.PositionX += 0;
-                firedBullet.PositionY -= 60;
+                firedBullet.PositionX += 15;
+                firedBullet.PositionY -= 50;
             }
+
             if (player.Direction == Constants.DIRECTIONS.UP)
             {
-                firedBullet.PositionX -= 60;
-                firedBullet.PositionY -= 125;
+                firedBullet.PositionX -= 52;
+                firedBullet.PositionY -= 120;
             }
+
             if (player.Direction == Constants.DIRECTIONS.DOWN)
             {
-                firedBullet.PositionX -= 60;
-                firedBullet.PositionY += 0;
+                firedBullet.PositionX -= 50;
+                firedBullet.PositionY += 15;
             }
 
             this.activeBullets.Add(firedBullet);
@@ -114,7 +110,7 @@ namespace FINKI_Adventures
                 bullet.Move();
 
                 if (!bullet.isInsideMap()) { 
-                    bullet.remove = true;
+                    bullet.RemoveMark = true;
                 }
             }
         }
@@ -124,18 +120,18 @@ namespace FINKI_Adventures
             foreach (Enemy enemy in enemies)
             {
                 enemy.Move(player);
-                enemy.dead = enemy.remove = enemy.Collision(player);
+                enemy.IsDead = enemy.hasCollided(player);
                 player.Score += enemy.Reward;
                 foreach(Bullet bullet in activeBullets)
                 {
-                    enemy.dead = enemy.remove = bullet.remove = enemy.Collision(bullet);
+                    enemy.IsDead = bullet.RemoveMark = enemy.hasCollided(bullet);
                 }
             }
         }
 
         public void moveMap()
         {
-            if (Map.Location.Y <= -10) // if it didn't reach the end
+            if (Map.Location.Y <= 0) // if it didn't reach the end
             {
                 // Move the map by 2 px vertically
                 Map.Location = new Point(Map.Location.X, Map.Location.Y + 2);

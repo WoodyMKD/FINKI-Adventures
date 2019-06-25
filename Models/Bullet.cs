@@ -8,13 +8,12 @@ using System.Windows.Forms;
 
 namespace FINKI_Adventures
 {
-    class Bullet : VisualObject
+    public class Bullet : VisualObject
     {
         public Constants.DIRECTIONS Direction { get; set; }
-        public int Velocity { get; set; }
-        public Animation animation { get; set; }
         public Color Color { get; set; }
-        public bool remove { get; set; }
+        public bool RemoveMark { get; set; }
+
         public Bullet(Constants.DIRECTIONS direction, Player player)
         {
             Direction = direction;
@@ -24,14 +23,8 @@ namespace FINKI_Adventures
             this.Height = 25;
             Velocity = 20;
             Color = Color.White;
-            remove = false;
-            animation = AllAnimations.bullet;
-        }
-
-        public void Animate(Graphics g)
-        {
-            // Draw the current bullet animation sprite
-            animation.Draw(g, PositionX, PositionY, Width, Height);
+            RemoveMark = false;
+            Animation = AllAnimations.bullet;
         }
 
         public void Move()

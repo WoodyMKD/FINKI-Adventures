@@ -14,13 +14,13 @@ namespace FINKI_Adventures
     public partial class GameView : UserControl
     {
         // Variables for the parent form and the game scene
-        private GameForm gameForm { get; set; }
-        private Scene gameScene { get; set; }
+        public GameForm gameForm { get; set; }
+        public Scene gameScene { get; set; }
 
         // Scene Options
-        private int animationTick = 2; // animation tick in order to use it with the main timer
-        private static Timer sceneTimer; // main game timer
-        private bool isInGame = false; // variable for checking whether the player is playing or is in the pause menu
+        public int animationTick = 2; // animation tick in order to use it with the main timer
+        public static Timer sceneTimer; // main game timer
+        public bool isInGame = false; // variable for checking whether the player is playing or is in the pause menu
 
         public GameView(GameForm gameForm)
         {
@@ -125,7 +125,7 @@ namespace FINKI_Adventures
                 }
 
                 // If the map has "eaten" the player
-                if (gameScene.player.PositionY > GameSettings.mapLowerBoundY - 10)
+                if (gameScene.player.PositionY > GameSettings.mapLowerBoundY)
                 {
                     gameScene.resetLevel();
                     openMenu();
@@ -134,7 +134,7 @@ namespace FINKI_Adventures
                 //Collision detection removal of enemies
                 for (int i=gameScene.enemies.Count-1;i>=0;i--)
                 {
-                    if(gameScene.enemies[i].dead || gameScene.enemies[i].remove)
+                    if(gameScene.enemies[i].IsDead)
                     {
                         gameScene.enemies.RemoveAt(i);
                     }
@@ -143,7 +143,7 @@ namespace FINKI_Adventures
                 //Bullets removal
                 for(int i = gameScene.activeBullets.Count-1; i >= 0; i--)
                 {
-                    if (gameScene.activeBullets[i].remove)
+                    if (gameScene.activeBullets[i].RemoveMark)
                     {
                         gameScene.activeBullets.RemoveAt(i);
                     }

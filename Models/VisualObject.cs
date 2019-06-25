@@ -13,6 +13,8 @@ namespace FINKI_Adventures
         public float PositionY { get; set; }
         public float Width { get; set; }
         public float Height { get; set; }
+        public Animation Animation { get; set; }
+        public int Velocity { get; set; }
 
         public bool isInsideMap()
         {
@@ -35,6 +37,20 @@ namespace FINKI_Adventures
                 else return false;
             }
             else return false;
+        }
+
+        public void Animate(Graphics g)
+        {
+            // Draw the current player animation sprite
+            Animation.Draw(g, PositionX - Width / 2, PositionY - Height / 2, Width, Height);
+        }
+
+        public bool hasCollided(VisualObject obj)
+        {
+            Rectangle firstHitBox = new Rectangle((int)PositionX, (int)PositionY, (int)Width - 20, (int)Height - 20);
+            Rectangle secondHitBox = new Rectangle((int)obj.PositionX, (int)obj.PositionY, (int)obj.Width - 20, (int)obj.Height - 20);
+
+            return firstHitBox.IntersectsWith(secondHitBox);    
         }
     }
 }

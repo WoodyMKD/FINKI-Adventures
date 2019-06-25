@@ -169,7 +169,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GameForm";
             this.Text = "Form1";
-            this.TransparencyKey = System.Drawing.Color.White;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.formPanel.ResumeLayout(false);
             this.formPanel.PerformLayout();

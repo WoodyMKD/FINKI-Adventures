@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace FINKI_Adventures
 {
-    class Book : Enemy
+    public class Book : Enemy
     {
-        //public static int Reward = 5;
-
         public Book()
         {
             this.Health = 150;
@@ -18,76 +16,29 @@ namespace FINKI_Adventures
             this.PositionY = 300;
             this.Width = 70;
             this.Height = 70;
-            Reward = 5;
-            dead = remove = false;
-            animation = AllAnimations.book;//.book sprite needed
+            Animation = AllAnimations.book;
         }
+
         public override void Move(Player player)
         {
             if (PositionX > player.PositionX)
             {
                 PositionX -= Velocity;
-                if (animation != AllAnimations.book)
-                {
-                    animation = AllAnimations.book;
-                    animation.Restart();
-                }
-                else
-                {
-                    if (animation.isAnimFinished())
-                    {
-                        animation.Restart();
-                    }
-                }
             }
 
             if (PositionY > player.PositionY)
             {
                 PositionY -= Velocity;
-                if (animation != AllAnimations.book)
-                {
-                    animation = AllAnimations.book;
-                    animation.Restart();
-                }
-                else
-                {
-                    if (animation.isAnimFinished())
-                    {
-                        animation.Restart();
-                    }
-                }
             }
+
             if (PositionX < player.PositionX)
             {
                 PositionX += Velocity;
-                if (animation != AllAnimations.book)
-                {
-                    animation = AllAnimations.book;
-                    animation.Restart();
-                }
-                else
-                {
-                    if (animation.isAnimFinished())
-                    {
-                        animation.Restart();
-                    }
-                }
             }
+
             if (PositionY < player.PositionY)
             {
                 PositionY += Velocity;
-                if (animation != AllAnimations.book)
-                {
-                    animation = AllAnimations.book;
-                    animation.Restart();
-                }
-                else
-                {
-                    if (animation.isAnimFinished())
-                    {
-                        animation.Restart();
-                    }
-                }
             }
         }
     }

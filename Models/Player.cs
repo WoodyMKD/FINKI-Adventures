@@ -7,28 +7,20 @@ using System.Threading.Tasks;
 
 namespace FINKI_Adventures
 {
-    class Player : VisualObject
+    public class Player : VisualObject
     {
-        public Animation animation { get; set; }
         public Constants.DIRECTIONS Direction { get; set; }
         public int Health { get; set; }
-        public int Velocity { get; set; }
         public int Score { get; set; }
 
         public Player()
         {
-            this.PositionX = 540;
+            this.PositionX = 640;
             this.PositionY = 1300;
             this.Width = 100;
             this.Height = 100;
-            this.animation = AllAnimations.main_up;
+            this.Animation = AllAnimations.main_up;
             this.Direction = Constants.DIRECTIONS.UP;
-        }
-
-        public void Animate(Graphics g)
-        {
-            // Draw the current player animation sprite
-            animation.Draw(g, PositionX - Width/2, PositionY - Height / 2, Width, Height);
         }
 
         public void Move(Constants.DIRECTIONS direction)
@@ -73,26 +65,26 @@ namespace FINKI_Adventures
 
         public void updateAnimation()
         {
-            Animation prevAnimation = animation;
+            Animation prevAnimation = Animation;
 
             if(Direction == Constants.DIRECTIONS.LEFT)
-                animation = AllAnimations.main_left;
+                Animation = AllAnimations.main_left;
             else if (Direction == Constants.DIRECTIONS.RIGHT)
-                animation = AllAnimations.main_right;
+                Animation = AllAnimations.main_right;
             else if (Direction == Constants.DIRECTIONS.UP)
-                animation = AllAnimations.main_up;
+                Animation = AllAnimations.main_up;
             else if (Direction == Constants.DIRECTIONS.DOWN)
-                animation = AllAnimations.main_down;
+                Animation = AllAnimations.main_down;
 
-            if(prevAnimation != animation)
+            if(prevAnimation != Animation)
             {
-                animation.Restart();
+                Animation.Restart();
             } 
             else
             {
-                if (animation.isAnimFinished())
+                if (Animation.isAnimFinished())
                 {
-                    animation.Restart();
+                    Animation.Restart();
                 }
             }
         }

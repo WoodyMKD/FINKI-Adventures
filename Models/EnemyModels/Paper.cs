@@ -19,24 +19,24 @@ namespace FINKI_Adventures
             this.Width = 55;
             this.Height = 55;
             Reward = 10;
-            dead = remove = false;
-            animation = AllAnimations.paper;//.paper sprites needed
+            IsDead = false;
+            Animation = AllAnimations.paper;//.paper sprites needed
         }
         public override void Move(Player player)
         {
             if (PositionX > player.PositionX)
             {
                 PositionX -= Velocity;
-                if (animation != AllAnimations.paper)
+                if (Animation != AllAnimations.paper)
                 {
-                    animation = AllAnimations.paper;
-                    animation.Restart();
+                    Animation = AllAnimations.paper;
+                    Animation.Restart();
                 }
                 else
                 {
-                    if (animation.isAnimFinished())
+                    if (Animation.isAnimFinished())
                     {
-                        animation.Restart();
+                        Animation.Restart();
                     }
                 }
             }
@@ -44,48 +44,48 @@ namespace FINKI_Adventures
             if (PositionY > player.PositionY)
             {
                 PositionY -= Velocity;
-                if (animation != AllAnimations.paper)
+                if (Animation != AllAnimations.paper)
                 {
-                    animation = AllAnimations.paper;
-                    animation.Restart();
+                    Animation = AllAnimations.paper;
+                    Animation.Restart();
                 }
                 else
                 {
-                    if (animation.isAnimFinished())
+                    if (Animation.isAnimFinished())
                     {
-                        animation.Restart();
+                        Animation.Restart();
                     }
                 }
             }
             if (PositionX < player.PositionX)
             {
                 PositionX += Velocity;
-                if (animation != AllAnimations.paper)
+                if (Animation != AllAnimations.paper)
                 {
-                    animation = AllAnimations.paper;
-                    animation.Restart();
+                    Animation = AllAnimations.paper;
+                    Animation.Restart();
                 }
                 else
                 {
-                    if (animation.isAnimFinished())
+                    if (Animation.isAnimFinished())
                     {
-                        animation.Restart();
+                        Animation.Restart();
                     }
                 }
             }
             if (PositionY < player.PositionY)
             {
                 PositionY += Velocity;
-                if (animation != AllAnimations.paper)
+                if (Animation != AllAnimations.paper)
                 {
-                    animation = AllAnimations.paper;
-                    animation.Restart();
+                    Animation = AllAnimations.paper;
+                    Animation.Restart();
                 }
                 else
                 {
-                    if (animation.isAnimFinished())
+                    if (Animation.isAnimFinished())
                     {
-                        animation.Restart();
+                        Animation.Restart();
                     }
                 }
             }

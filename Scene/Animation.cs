@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace FINKI_Adventures
 {
-    class Animation
+    public class Animation
     {
-        Bitmap[] spriteImages;
-        int index;
+        public Bitmap[] spriteImages { get; set; }
+        public int index { get; set; }
 
         public Animation(Bitmap[] images)
         {
