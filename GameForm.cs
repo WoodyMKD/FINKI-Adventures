@@ -16,6 +16,7 @@ namespace FINKI_Adventures
         {
             InitializeComponent();
             DoubleBuffered = true;
+
             // Initialize panel sizes
             levelPanel.Size = new Size(1280, 50);
             helpPanel.Size = new Size(1280, 50);
@@ -34,7 +35,7 @@ namespace FINKI_Adventures
                 this.ClientSize.Width / 2 - gamePanel.Size.Width / 2,
                 this.ClientSize.Height / 2 - gamePanel.Size.Height / 2 + 720); // below the gamePanel
 
-            // Initialize and show the User Control where the main game is located
+            // Initialize and show the User Control used as game view
             GameView myForm = new GameView(this);
             myForm.BackColor = Color.Black;
             gamePanel.Controls.Add(myForm);

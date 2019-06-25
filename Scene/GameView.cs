@@ -13,33 +13,36 @@ namespace FINKI_Adventures
 {
     public partial class GameView : UserControl
     {
-        GameForm gameForm = null;
-        Scene gameScene = null;
-        int animationTick = 2;
-        static public Timer sceneTimer;
-        bool isInGame = false;
+        // Variables for the parent form and the game scene
+        private GameForm gameForm { get; set; }
+        private Scene gameScene { get; set; }
+
+        // Scene Options
+        private int animationTick = 2; // animation tick in order to use it with the main timer
+        private static Timer sceneTimer; // main game timer
+        private bool isInGame = false; // variable for checking whether the player is playing or is in the pause menu
 
         public GameView(GameForm gameForm)
         {
+            // Form settings
             InitializeComponent();
-
-            // Trick for doubleBuffering panel
-            SetStyle(ControlStyles.DoubleBuffer, true);
+            this.DoubleBuffered = true;
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, sceneControl, new object[] { true });
 
+            // Scene setup
             this.gameForm = gameForm;
             AllAnimations.InitializeAnimations();
             this.gameScene = new Scene(sceneControl);
-            
-            menuPanel.Location = new Point(0, gameScene.mapBottomY - 700); // Adjust the location of the menu
-            gameScene.createEnemies(gameScene.player);
+            menuPanel.Location = new Point(0, GameSettings.mapUpperBoundY); // Adjust the location of the menu
 
-            // Main timer for the game
+            // Main timer initialization
             sceneTimer = new Timer();
             sceneTimer.Tick += new EventHandler(sceneTimer_Tick);
             sceneTimer.Interval = 50;
             sceneTimer.Start();
             sceneTimer.Enabled = true;
+
+            gameScene.createEnemies(gameScene.player);
         }
 
         private void GameView_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -68,30 +71,37 @@ namespace FINKI_Adventures
                 // Left Arrow Key is pressed
                 if (e.KeyCode == Keys.Left || e.KeyCode == Keys.A)
                 {
-                    gameScene.MovePlayerLeft();
+                    gameScene.MovePlayer(Constants.DIRECTIONS.LEFT);
                 }
 
                 // Right Arrow Key is pressed
                 if (e.KeyCode == Keys.Right || e.KeyCode == Keys.D)
                 {
-                    gameScene.MovePlayerRight();
+                    gameScene.MovePlayer(Constants.DIRECTIONS.RIGHT);
                 }
 
                 // Up Arrow Key is pressed
                 if (e.KeyCode == Keys.Up || e.KeyCode == Keys.W)
                 {
-                    gameScene.MovePlayerUp();
+                    gameScene.MovePlayer(Constants.DIRECTIONS.UP);
                 }
 
                 // Down Arrow Key is pressed
                 if (e.KeyCode == Keys.Down || e.KeyCode == Keys.S)
                 {
-                    gameScene.MovePlayerDown();
+                    gameScene.MovePlayer(Constants.DIRECTIONS.DOWN);
                 }
 
+                // Space Key is pressed
                 if (e.KeyCode == Keys.Space)
                 {
                     gameScene.createBullet(gameScene.player);
+                }
+
+                // Tab Key is pressed
+                if (e.KeyCode == Keys.Tab)
+                {
+                    GameSettings.showHitBoxes = !GameSettings.showHitBoxes;
                 }
             }
         }
@@ -115,7 +125,7 @@ namespace FINKI_Adventures
                 }
 
                 // If the map has "eaten" the player
-                if (gameScene.player.Y > gameScene.mapBottomY - 10)
+                if (gameScene.player.PositionY > GameSettings.mapLowerBoundY - 10)
                 {
                     gameScene.resetLevel();
                     openMenu();
@@ -152,12 +162,11 @@ namespace FINKI_Adventures
             closeMenu();
         }
 
-
         public void openMenu()
         {
             Cursor.Show();
             isInGame = false;
-            menuPanel.Location = new Point(0, gameScene.mapBottomY - 700); // Adjust the location of the menu
+            menuPanel.Location = new Point(0, GameSettings.mapUpperBoundY); // Adjust the location of the menu
             menuPanel.Show();
         }
 

@@ -12,7 +12,7 @@ namespace FINKI_Adventures
         Bitmap[] spriteImages;
         int index;
 
-        public Animation(Bitmap[] images, bool ne_stoi)
+        public Animation(Bitmap[] images)
         {
             this.spriteImages = images;
             index = 0;
@@ -22,6 +22,9 @@ namespace FINKI_Adventures
         {
             // Draw the current animation sprite
             g.DrawImage(spriteImages[index], x, y, width, height);
+
+            if (GameSettings.showHitBoxes)
+                g.DrawRectangle(new Pen(Color.Black), x, y, width, height);
         }
 
         public void nextImage()

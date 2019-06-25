@@ -8,7 +8,6 @@ using System.Windows.Forms;
 
 namespace FINKI_Adventures
 {
-
     enum Level
     {
         Kampus_Dvor = 1,
@@ -18,93 +17,94 @@ namespace FINKI_Adventures
 
     class Scene
     {
-        public Level currentLevel { get; set; }
+        // Visual Objects
         public Player player { get; }
         public List<Bullet> activeBullets { get; }
         public List<Enemy> enemies { get; }
 
-        private Panel Map;
-        private Bitmap currentMap = null;
-
-        public int mapBottomY = 1480; // Helper variable to track the map
+        // Current Game State
+        private Panel Map { get; set; }
+        private Bitmap currentMap { get; set; }
+        public Level currentLevel { get; set; }
 
         public Scene(Panel Map)
         {
-            this.Map = Map;
+            // Initialize visual object variables
             player = new Player();
             activeBullets = new List<Bullet>();
             enemies = new List<Enemy>();
 
-            // Initialize the first level
-            currentMap = Properties.Resources.kampus_dvor;
-            currentLevel = Level.Kampus_Dvor;
-            Map.BackgroundImage = currentMap;
+            // Initialize the starting game state
+            this.Map = Map;
+            this.currentMap = Properties.Resources.kampus_dvor;
+            this.currentLevel = Level.Kampus_Dvor;
+            this.Map.BackgroundImage = currentMap;
+
+            // Update settings
+            GameSettings.mapLowerBoundY = 1500; // Helper variable to track the map
+            GameSettings.mapUpperBoundY = 780; // Helper variable to track the map
         }
 
         public void Draw(Graphics g)
         {
             // Draw the player
             player.Animate(g);
-
-            //Console.WriteLine("ActiveBullets: " + activeBullets.Count);
-
-            // Draw bullets
+            
+            // Draw the active bullets 
             foreach (Bullet bullet in activeBullets)
             {
-                Console.WriteLine("Bullet " + bullet.Direction);
                 bullet.Animate(g);
             }
+
+            // Draw active enemies
             foreach (Enemy enemy in enemies)
             {
                 enemy.Animate(g);
-                Console.WriteLine("Moved enemy");
             }
         }
 
         public void createBullet(Player player)
         {
             Bullet firedBullet = new Bullet(player.Direction, player);
-            if (player.Direction == "left")
+
+            if (player.Direction == Constants.DIRECTIONS.LEFT)
             {
-                firedBullet.X -= 45;
-                firedBullet.Y -= 15;
+                firedBullet.PositionX -= 125;
+                firedBullet.PositionY -= 65;
             }
-            if (player.Direction == "right")
+            if (player.Direction == Constants.DIRECTIONS.RIGHT)
             {
-                firedBullet.X += 35;
-                firedBullet.Y -= 10;
+                firedBullet.PositionX += 0;
+                firedBullet.PositionY -= 60;
             }
-            if (player.Direction == "up")
+            if (player.Direction == Constants.DIRECTIONS.UP)
             {
-                firedBullet.X -= 10;
-                firedBullet.Y -= 45;
+                firedBullet.PositionX -= 60;
+                firedBullet.PositionY -= 125;
             }
-            if (player.Direction == "down")
+            if (player.Direction == Constants.DIRECTIONS.DOWN)
             {
-                firedBullet.X -= 15;
-                firedBullet.Y += 35;
+                firedBullet.PositionX -= 60;
+                firedBullet.PositionY += 0;
             }
 
             this.activeBullets.Add(firedBullet);
-            Console.WriteLine("Created");
         }
+
         public void createEnemies(Player player)
         {
             Book book = new Book();
             Paper paper = new Paper();
-            if (player.Y > 500)
+
+            if (player.PositionY > 500)
             {
                 this.enemies.Add(book);
-                Console.WriteLine("Created");
             }
-            if (player.Y > 900)
+
+            if (player.PositionY > 900)
             {
                 this.enemies.Add(paper);
-                Console.WriteLine("Created");
             }
-
-
-            //Console.WriteLine("Created");
         }
 
         public void moveBullets()
@@ -112,9 +112,13 @@ namespace FINKI_Adventures
             foreach (Bullet bullet in activeBullets)
             {
                 bullet.Move();
-                bullet.remove = bullet.OutOfScene(Map.Top, Map.Bottom);//check map bounds
+
+                if (!bullet.isInsideMap()) { 
+                    bullet.remove = true;
+                }
             }
         }
+
         public void moveEnemies()
         {
             foreach (Enemy enemy in enemies)
@@ -131,11 +135,12 @@ namespace FINKI_Adventures
 
         public void moveMap()
         {
-            if(Map.Location.Y <= -10) // if it didn't reach the end
+            if (Map.Location.Y <= -10) // if it didn't reach the end
             {
                 // Move the map by 2 px vertically
                 Map.Location = new Point(Map.Location.X, Map.Location.Y + 2);
-                mapBottomY -= 2;
+                GameSettings.mapLowerBoundY -= 2;
+                GameSettings.mapUpperBoundY -= 2;
             }
         }
 
@@ -144,36 +149,14 @@ namespace FINKI_Adventures
             Map.BackgroundImage = currentMap;
             Map.Location = new Point(0, -780);
             player.resetPosition();
-            mapBottomY = 1480;
+
+            GameSettings.mapLowerBoundY = 1500;
+            GameSettings.mapUpperBoundY = 780;
         }
 
-        public void MovePlayerLeft()
+        public void MovePlayer(Constants.DIRECTIONS direction)
         {
-            if(player.X > 5)
-            {
-                player.MoveLeft();
-            }
-        }
-
-        public void MovePlayerUp()
-        {
-            if(player.Y > mapBottomY - 720)
-            {
-                player.MoveUp();
-            }
-        }
-
-        public void MovePlayerDown()
-        {
-            player.MoveDown();
-        }
-
-        public void MovePlayerRight()
-        {
-            if (player.X < 1190)
-            {
-                player.MoveRight();
-            }
+            player.Move(direction);
         }
     }
 }

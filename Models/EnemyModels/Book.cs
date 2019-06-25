@@ -6,30 +6,30 @@ using System.Threading.Tasks;
 
 namespace FINKI_Adventures
 {
-    class Paper : Enemy
+    class Book : Enemy
     {
-        //public static int Reward = 10;
+        //public static int Reward = 5;
 
-        public Paper()
+        public Book()
         {
-            this.Health = 250;
-            this.Velocity = 10;
-            this.X = 340;
-            this.Y = 400;
-            this.width = 55;
-            this.height = 55;
-            Reward = 10;
+            this.Health = 150;
+            this.Velocity = 5;
+            this.PositionX = 640;
+            this.PositionY = 300;
+            this.Width = 70;
+            this.Height = 70;
+            Reward = 5;
             dead = remove = false;
-            animation = AllAnimations.paper;//.paper sprites needed
+            animation = AllAnimations.book;//.book sprite needed
         }
         public override void Move(Player player)
         {
-            if (X > player.X)
+            if (PositionX > player.PositionX)
             {
-                X -= Velocity;
-                if (animation != AllAnimations.paper)
+                PositionX -= Velocity;
+                if (animation != AllAnimations.book)
                 {
-                    animation = AllAnimations.paper;
+                    animation = AllAnimations.book;
                     animation.Restart();
                 }
                 else
@@ -41,12 +41,12 @@ namespace FINKI_Adventures
                 }
             }
 
-            if (Y > player.Y)
+            if (PositionY > player.PositionY)
             {
-                Y -= Velocity;
-                if (animation != AllAnimations.paper)
+                PositionY -= Velocity;
+                if (animation != AllAnimations.book)
                 {
-                    animation = AllAnimations.paper;
+                    animation = AllAnimations.book;
                     animation.Restart();
                 }
                 else
@@ -57,12 +57,12 @@ namespace FINKI_Adventures
                     }
                 }
             }
-            if (X < player.X)
+            if (PositionX < player.PositionX)
             {
-                X += Velocity;
-                if (animation != AllAnimations.paper)
+                PositionX += Velocity;
+                if (animation != AllAnimations.book)
                 {
-                    animation = AllAnimations.paper;
+                    animation = AllAnimations.book;
                     animation.Restart();
                 }
                 else
@@ -73,12 +73,12 @@ namespace FINKI_Adventures
                     }
                 }
             }
-            if (Y < player.Y)
+            if (PositionY < player.PositionY)
             {
-                Y += Velocity;
-                if (animation != AllAnimations.paper)
+                PositionY += Velocity;
+                if (animation != AllAnimations.book)
                 {
-                    animation = AllAnimations.paper;
+                    animation = AllAnimations.book;
                     animation.Restart();
                 }
                 else
