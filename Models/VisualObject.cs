@@ -14,7 +14,6 @@ namespace FINKI_Adventures
         public float Width { get; set; }
         public float Height { get; set; }
         public Animation Animation { get; set; }
-        public int Velocity { get; set; }
 
         public bool isInsideMap()
         {
@@ -47,8 +46,8 @@ namespace FINKI_Adventures
 
         public bool hasCollided(VisualObject obj)
         {
-            Rectangle firstHitBox = new Rectangle((int)PositionX, (int)PositionY, (int)Width - 20, (int)Height - 20);
-            Rectangle secondHitBox = new Rectangle((int)obj.PositionX, (int)obj.PositionY, (int)obj.Width - 20, (int)obj.Height - 20);
+            Rectangle firstHitBox = new Rectangle((int)PositionX, (int)PositionY, (int)Width, (int)Height);
+            Rectangle secondHitBox = new Rectangle((int)obj.PositionX, (int)obj.PositionY, (int)obj.Width, (int)obj.Height);
 
             return firstHitBox.IntersectsWith(secondHitBox);    
         }

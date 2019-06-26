@@ -12,6 +12,8 @@ namespace FINKI_Adventures
 {
     public partial class GameForm : Form
     {
+        GameView gameView;
+
         public GameForm()
         {
             InitializeComponent();
@@ -36,15 +38,27 @@ namespace FINKI_Adventures
                 this.ClientSize.Height / 2 - gamePanel.Size.Height / 2 + 720); // below the gamePanel
 
             // Initialize and show the User Control used as game view
-            GameView myForm = new GameView(this);
-            myForm.BackColor = Color.Black;
-            gamePanel.Controls.Add(myForm);
-            myForm.Show();
+            this.gameView = new GameView(this);
+            gameView.BackColor = Color.Black;
+            gamePanel.Controls.Add(gameView);
+            gameView.Show();
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void lblTimer_Tick(object sender, EventArgs e)
+        {
+            Constants.LEVELS currentLevel = gameView.gameScene.currentLevel;
+            lblPointsHealth.Text = "Поени: " + gameView.gameScene.player.Score.ToString() + " | Здравје: " + gameView.gameScene.player.Health + "%";
+            lblLevel.Text = "Ниво: ";
+
+            if(currentLevel == Constants.LEVELS.KAMPUS_DVOR)
+            {
+                lblLevel.Text += "Кампус двор";
+            }
         }
     }
 }

@@ -41,8 +41,6 @@ namespace FINKI_Adventures
             sceneTimer.Interval = 50;
             sceneTimer.Start();
             sceneTimer.Enabled = true;
-
-            gameScene.createEnemies(gameScene.player);
         }
 
         private void GameView_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -114,8 +112,10 @@ namespace FINKI_Adventures
             if(isInGame)
             {
                 gameScene.moveMap(); // Scroll the map vertically
+
                 gameScene.moveBullets(); // Move current bullets on map
                 gameScene.moveEnemies(); // Move the enemies if they are created
+                gameScene.createEnemies();
 
                 // Iterate through animation sprites
                 if (--animationTick <= 0)
@@ -124,30 +124,16 @@ namespace FINKI_Adventures
                     animationTick = 2;
                 }
 
-                // If the map has "eaten" the player
-                if (gameScene.player.PositionY > GameSettings.mapLowerBoundY)
+                // If the map has "eaten" the player or the player died
+                if (gameScene.player.PositionY > GameSettings.mapLowerBoundY || gameScene.player.Health <= 0)
                 {
                     gameScene.resetLevel();
                     openMenu();
                 }
 
                 //Collision detection removal of enemies
-                for (int i=gameScene.enemies.Count-1;i>=0;i--)
-                {
-                    if(gameScene.enemies[i].IsDead)
-                    {
-                        gameScene.enemies.RemoveAt(i);
-                    }
-                }
-
-                //Bullets removal
-                for(int i = gameScene.activeBullets.Count-1; i >= 0; i--)
-                {
-                    if (gameScene.activeBullets[i].RemoveMark)
-                    {
-                        gameScene.activeBullets.RemoveAt(i);
-                    }
-                }
+                gameScene.enemies.RemoveAll(enemy => enemy.IsDead);
+                gameScene.activeBullets.RemoveAll(b => b.RemoveMark && b.Animation.isAnimFinished());
             }
         }
 
@@ -181,7 +167,7 @@ namespace FINKI_Adventures
         {
             // Repaint the main game panel (scene)
             Graphics g = e.Graphics;
-            gameScene.Draw(g); 
+            gameScene.Draw(g);
         }
     }
 }

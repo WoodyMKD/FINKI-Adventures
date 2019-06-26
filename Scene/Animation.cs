@@ -44,7 +44,7 @@ namespace FINKI_Adventures
 
         public bool isAnimFinished()
         {
-            return index == spriteImages.Length;
+            return index == spriteImages.Length-1;
         }
     }
 }

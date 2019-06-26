@@ -8,86 +8,40 @@ namespace FINKI_Adventures
 {
     class Paper : Enemy
     {
-        //public static int Reward = 10;
-
-        public Paper()
+        public Paper(int posX, int posY)
         {
             this.Health = 250;
+            this.Damage = 20;
             this.Velocity = 10;
-            this.PositionX = 340;
-            this.PositionY = 400;
+            this.PositionX = posX;
+            this.PositionY = posY;
             this.Width = 55;
             this.Height = 55;
-            Reward = 10;
-            IsDead = false;
-            Animation = AllAnimations.paper;//.paper sprites needed
+            this.Reward = 10;
+            this.IsDead = false;
+            this.Animation = AllAnimations.paper;
         }
+
         public override void Move(Player player)
         {
             if (PositionX > player.PositionX)
             {
                 PositionX -= Velocity;
-                if (Animation != AllAnimations.paper)
-                {
-                    Animation = AllAnimations.paper;
-                    Animation.Restart();
-                }
-                else
-                {
-                    if (Animation.isAnimFinished())
-                    {
-                        Animation.Restart();
-                    }
-                }
             }
 
             if (PositionY > player.PositionY)
             {
                 PositionY -= Velocity;
-                if (Animation != AllAnimations.paper)
-                {
-                    Animation = AllAnimations.paper;
-                    Animation.Restart();
-                }
-                else
-                {
-                    if (Animation.isAnimFinished())
-                    {
-                        Animation.Restart();
-                    }
-                }
             }
+
             if (PositionX < player.PositionX)
             {
                 PositionX += Velocity;
-                if (Animation != AllAnimations.paper)
-                {
-                    Animation = AllAnimations.paper;
-                    Animation.Restart();
-                }
-                else
-                {
-                    if (Animation.isAnimFinished())
-                    {
-                        Animation.Restart();
-                    }
-                }
             }
+
             if (PositionY < player.PositionY)
             {
                 PositionY += Velocity;
-                if (Animation != AllAnimations.paper)
-                {
-                    Animation = AllAnimations.paper;
-                    Animation.Restart();
-                }
-                else
-                {
-                    if (Animation.isAnimFinished())
-                    {
-                        Animation.Restart();
-                    }
-                }
             }
         }
     }

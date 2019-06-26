@@ -139,5 +139,35 @@
   <ItemGroup>
     <None Include="Resources\new_bullet.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paper.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

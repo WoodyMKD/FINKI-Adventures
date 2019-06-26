@@ -28,16 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
             this.gamePanel = new System.Windows.Forms.Panel();
             this.formPanel = new System.Windows.Forms.Panel();
             this.lbl_formPanel = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.PictureBox();
-            this.lb_level = new System.Windows.Forms.Label();
+            this.lblLevel = new System.Windows.Forms.Label();
             this.levelPanel = new System.Windows.Forms.Panel();
-            this.lb_points = new System.Windows.Forms.Label();
+            this.lblPointsHealth = new System.Windows.Forms.Label();
             this.helpPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblTimer = new System.Windows.Forms.Timer(this.components);
             this.formPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
             this.levelPanel.SuspendLayout();
@@ -92,43 +94,41 @@
             this.closeButton.TabStop = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
-            // lb_level
+            // lblLevel
             // 
-            this.lb_level.BackColor = System.Drawing.Color.Black;
-            this.lb_level.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lb_level.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_level.ForeColor = System.Drawing.Color.Gray;
-            this.lb_level.Location = new System.Drawing.Point(0, 0);
-            this.lb_level.Name = "lb_level";
-            this.lb_level.Size = new System.Drawing.Size(283, 50);
-            this.lb_level.TabIndex = 2;
-            this.lb_level.Text = "Ниво: Кампус";
-            this.lb_level.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblLevel.BackColor = System.Drawing.Color.Black;
+            this.lblLevel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblLevel.Font = new System.Drawing.Font("Arial Narrow", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLevel.ForeColor = System.Drawing.Color.Gray;
+            this.lblLevel.Location = new System.Drawing.Point(0, 0);
+            this.lblLevel.Name = "lblLevel";
+            this.lblLevel.Size = new System.Drawing.Size(428, 50);
+            this.lblLevel.TabIndex = 2;
+            this.lblLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // levelPanel
             // 
             this.levelPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.levelPanel.BackColor = System.Drawing.Color.Black;
-            this.levelPanel.Controls.Add(this.lb_points);
-            this.levelPanel.Controls.Add(this.lb_level);
+            this.levelPanel.Controls.Add(this.lblPointsHealth);
+            this.levelPanel.Controls.Add(this.lblLevel);
             this.levelPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.levelPanel.Location = new System.Drawing.Point(4, 100);
             this.levelPanel.Name = "levelPanel";
             this.levelPanel.Size = new System.Drawing.Size(784, 50);
             this.levelPanel.TabIndex = 1;
             // 
-            // lb_points
+            // lblPointsHealth
             // 
-            this.lb_points.BackColor = System.Drawing.Color.Black;
-            this.lb_points.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lb_points.Font = new System.Drawing.Font("Arial Narrow", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_points.ForeColor = System.Drawing.Color.Gray;
-            this.lb_points.Location = new System.Drawing.Point(501, 0);
-            this.lb_points.Name = "lb_points";
-            this.lb_points.Size = new System.Drawing.Size(283, 50);
-            this.lb_points.TabIndex = 3;
-            this.lb_points.Text = "Поени: 0";
-            this.lb_points.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblPointsHealth.BackColor = System.Drawing.Color.Black;
+            this.lblPointsHealth.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblPointsHealth.Font = new System.Drawing.Font("Arial Narrow", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPointsHealth.ForeColor = System.Drawing.Color.Gray;
+            this.lblPointsHealth.Location = new System.Drawing.Point(434, 0);
+            this.lblPointsHealth.Name = "lblPointsHealth";
+            this.lblPointsHealth.Size = new System.Drawing.Size(350, 50);
+            this.lblPointsHealth.TabIndex = 3;
+            this.lblPointsHealth.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // helpPanel
             // 
@@ -154,6 +154,12 @@
             this.label2.Text = "Притиснете \"R\" за да го рестартирате нивото | Притиснете \"ESC\" за да го отворите " +
     "менито";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.Enabled = true;
+            this.lblTimer.Interval = 300;
+            this.lblTimer.Tick += new System.EventHandler(this.lblTimer_Tick);
             // 
             // GameForm
             // 
@@ -185,11 +191,12 @@
         private System.Windows.Forms.Panel formPanel;
         private System.Windows.Forms.PictureBox closeButton;
         private System.Windows.Forms.Label lbl_formPanel;
-        public System.Windows.Forms.Label lb_level;
+        public System.Windows.Forms.Label lblLevel;
         private System.Windows.Forms.Panel levelPanel;
-        public System.Windows.Forms.Label lb_points;
+        public System.Windows.Forms.Label lblPointsHealth;
         private System.Windows.Forms.Panel helpPanel;
         public System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer lblTimer;
     }
 }
 

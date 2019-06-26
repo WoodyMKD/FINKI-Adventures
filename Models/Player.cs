@@ -17,6 +17,7 @@ namespace FINKI_Adventures
         {
             this.PositionX = 640;
             this.PositionY = 1300;
+            this.Health = 100;
             this.Width = 100;
             this.Height = 100;
             this.Animation = AllAnimations.main_up;

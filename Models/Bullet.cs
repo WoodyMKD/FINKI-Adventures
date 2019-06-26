@@ -13,6 +13,7 @@ namespace FINKI_Adventures
         public Constants.DIRECTIONS Direction { get; set; }
         public Color Color { get; set; }
         public bool RemoveMark { get; set; }
+        public int Velocity { get; set; }
 
         public Bullet(Constants.DIRECTIONS direction, Player player)
         {
@@ -33,14 +34,17 @@ namespace FINKI_Adventures
             {
                 this.PositionX -= Velocity;
             }
+
             if (Direction == Constants.DIRECTIONS.RIGHT)
             {
                 this.PositionX += Velocity;
             }
+
             if (Direction == Constants.DIRECTIONS.UP)
             {
                 this.PositionY -= Velocity;
             }
+
             if (Direction == Constants.DIRECTIONS.DOWN)
             {
                 this.PositionY += Velocity;

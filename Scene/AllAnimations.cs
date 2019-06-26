@@ -52,21 +52,26 @@ namespace FINKI_Adventures
 
             //Enemies
             book = new Animation(new Bitmap[] {
-                Properties.Resources.bullet //sprite should be changed
+                Properties.Resources.book1,
+                Properties.Resources.book2,
+                Properties.Resources.book3,
+                Properties.Resources.book4,
+                Properties.Resources.book5,
+                Properties.Resources.book6,
+                Properties.Resources.book7,
+                Properties.Resources.book8,
+                Properties.Resources.book9
             });
 
             paper = new Animation(new Bitmap[] {
-                Properties.Resources.bullet //sprite should be replaced with multiple paper sprites
+                Properties.Resources.paper //sprite should be replaced with multiple paper sprites
             });
         }
 
         public static void nextImage()
         {
             // Iterate through the next image
-            main_up.nextImage();
-            main_down.nextImage();
-            main_left.nextImage();
-            main_right.nextImage();
+            book.nextImage();
         }
     }
 }

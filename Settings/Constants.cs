@@ -24,5 +24,8 @@ namespace FINKI_Adventures
         // Map Constants
         public static readonly int mapLeftBound = 0;
         public static readonly int mapRightBound = 1280;
+
+        // Random
+        public static Random randomGenerator = new Random();
     }
 }

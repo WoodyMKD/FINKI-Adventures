@@ -11,7 +11,9 @@ namespace FINKI_Adventures
     {
         public int Health { get; set; }
         public int Reward { get; set; }
+        public int Damage { get; set; }
         public bool IsDead { get; set; }
+        public int Velocity { get; set; }
 
         public abstract void Move(Player player);
     }

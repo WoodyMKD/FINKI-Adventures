@@ -87,19 +87,27 @@ namespace FINKI_Adventures
             this.activeBullets.Add(firedBullet);
         }
 
-        public void createEnemies(Player player)
+        public void createEnemies()
         {
-            Book book = new Book();
-            Paper paper = new Paper();
-
-            if (player.PositionY > 500)
+            if (GameSettings.mapUpperBoundY > 0)
             {
-                this.enemies.Add(book);
-            }
+                if (currentLevel == Constants.LEVELS.KAMPUS_DVOR)
+                {
+                    if (enemies.Count < 2)
+                    {
+                        int randomX = Constants.randomGenerator.Next(0, 1280);
+                        int type = Constants.randomGenerator.Next(0, 2);
 
-            if (player.PositionY > 900)
-            {
-                this.enemies.Add(paper);
+                        if (type == 0)
+                        {
+                            this.enemies.Add(new Book(randomX, GameSettings.mapUpperBoundY - 100));
+                        }
+                        else
+                        {
+                            this.enemies.Add(new Paper(randomX, GameSettings.mapUpperBoundY - 100));
+                        }
+                    }
+                }
             }
         }
 
@@ -112,6 +120,16 @@ namespace FINKI_Adventures
                 if (!bullet.isInsideMap()) { 
                     bullet.RemoveMark = true;
                 }
+
+                foreach (Enemy enemy in enemies)
+                {
+                    if(bullet.hasCollided(enemy))
+                    {
+                        bullet.RemoveMark = true;
+                        enemy.IsDead = true;
+                        player.Score += enemy.Reward;
+                    }
+                }
             }
         }
 
@@ -120,11 +138,10 @@ namespace FINKI_Adventures
             foreach (Enemy enemy in enemies)
             {
                 enemy.Move(player);
-                enemy.IsDead = enemy.hasCollided(player);
-                player.Score += enemy.Reward;
-                foreach(Bullet bullet in activeBullets)
+                if(enemy.hasCollided(player))
                 {
-                    enemy.IsDead = bullet.RemoveMark = enemy.hasCollided(bullet);
+                    enemy.IsDead = true;
+                    player.Health -= enemy.Damage;
                 }
             }
         }
@@ -145,6 +162,10 @@ namespace FINKI_Adventures
             Map.BackgroundImage = currentMap;
             Map.Location = new Point(0, -780);
             player.resetPosition();
+
+            enemies.Clear();
+            player.Health = 100;
+            player.Score = 0;
 
             GameSettings.mapLowerBoundY = 1500;
             GameSettings.mapUpperBoundY = 780;

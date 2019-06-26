@@ -41,6 +41,7 @@
             // 
             // sceneControl
             // 
+            this.sceneControl.BackColor = System.Drawing.Color.Black;
             this.sceneControl.Controls.Add(this.menuPanel);
             this.sceneControl.Location = new System.Drawing.Point(0, -780);
             this.sceneControl.Name = "sceneControl";
