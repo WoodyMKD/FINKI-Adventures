@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Media;
 using System.Windows.Forms;
 
 namespace FINKI_Adventures
@@ -14,6 +16,8 @@ namespace FINKI_Adventures
         public List<Enemy> enemies { get; }
         public Boss gameBoss { get; set; }
 
+        SoundPlayer enemyDead;
+
         // Current Game State
         private Panel Map { get; set; }
         public Constants.LEVELS currentLevel { get; set; }
@@ -24,6 +28,9 @@ namespace FINKI_Adventures
             this.player = new Player();
             this.activeBullets = new List<Bullet>();
             this.enemies = new List<Enemy>();
+            
+            Stream str = Properties.Resources.enemyDead;
+            this.enemyDead = new SoundPlayer(str);
 
             // Initialize the starting game state
             this.Map = Map;
@@ -189,6 +196,8 @@ namespace FINKI_Adventures
                         {
                             enemy.IsDead = true;
                             player.Score += enemy.Reward;
+
+                            enemyDead.Play();
                         }
                         bullet.RemoveMark = true;
                     }

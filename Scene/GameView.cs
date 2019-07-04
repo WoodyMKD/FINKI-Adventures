@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Media;
+using System.IO;
 
 namespace FINKI_Adventures
 {
@@ -16,6 +18,9 @@ namespace FINKI_Adventures
         // Variables for the parent form and the game scene
         public GameForm gameForm { get; set; }
         public Scene gameScene { get; set; }
+        Player player = new Player();
+
+        SoundPlayer fireBullet = new SoundPlayer();
 
         // Scene Options
         public int bossTick = 0; // animation tick in order to use it with the main timer
@@ -37,6 +42,9 @@ namespace FINKI_Adventures
             AllAnimations.InitializeAnimations();
             this.gameScene = new Scene(sceneControl);
             menuPanel.Location = new Point(0, GameSettings.mapUpperBoundY); // Adjust the location of the menu
+
+            Stream str = Properties.Resources.fire;
+            this.fireBullet = new SoundPlayer(str);
 
             // Main timer initialization
             sceneTimer = new Timer();
@@ -103,6 +111,8 @@ namespace FINKI_Adventures
                         gameScene.createBullet(gameScene.player);
                         canFire = false;
                         fireTick = 5;
+
+                        fireBullet.Play();
                     }
                 }
 

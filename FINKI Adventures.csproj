@@ -227,5 +227,14 @@
   <ItemGroup>
     <None Include="Resources\B22.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ambience.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemyDead.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fire.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
