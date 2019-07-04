@@ -94,10 +94,19 @@ namespace FINKI_Adventures
             }
         }
 
-        public void resetPosition()
+        public void resetPosition(Constants.LEVELS level)
         {
-            this.PositionX = 540;
-            this.PositionY = 1300;
+            if (level != Constants.LEVELS.ISPIT)
+            {
+                this.PositionX = 540;
+                this.PositionY = 1300;
+            } 
+            else
+            {
+                this.PositionX = 1170;
+                this.PositionY = 600;
+            }
+
             this.Width = 100;
             this.Height = 100;
         }

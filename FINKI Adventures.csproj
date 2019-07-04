@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\EnemyModels\Boss.cs" />
     <Compile Include="Scene\AllAnimations.cs" />
     <Compile Include="Scene\Animation.cs" />
     <Compile Include="Models\EnemyModels\Book.cs" />
@@ -207,6 +208,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boss_as.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boss_ds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boss_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boss_gm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boss_sl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B22.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

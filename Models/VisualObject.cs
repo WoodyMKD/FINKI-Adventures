@@ -9,10 +9,10 @@ namespace FINKI_Adventures
 {
     public abstract class VisualObject
     {
-        public float PositionX { get; set; }
-        public float PositionY { get; set; }
-        public float Width { get; set; }
-        public float Height { get; set; }
+        public int PositionX { get; set; }
+        public int PositionY { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
         public Animation Animation { get; set; }
 
         public bool isInsideMap()
@@ -42,14 +42,17 @@ namespace FINKI_Adventures
 
         public void Animate(Graphics g)
         {
-            // Draw the current player animation sprite
+            // Draw sprites
             Animation.Draw(g, PositionX - Width / 2, PositionY - Height / 2, Width, Height);
+
+            if (GameSettings.showHitBoxes)
+                g.DrawRectangle(new Pen(Color.Tomato), PositionX - Width / 2, PositionY - Height / 2, Width, Height);
         }
 
         public bool hasCollided(VisualObject obj)
         {
-            Rectangle firstHitBox = new Rectangle((int)PositionX, (int)PositionY, (int)Width, (int)Height);
-            Rectangle secondHitBox = new Rectangle((int)obj.PositionX, (int)obj.PositionY, (int)obj.Width, (int)obj.Height);
+            Rectangle firstHitBox = new Rectangle(PositionX - Width/2, PositionY - Height/2, Width, Height);
+            Rectangle secondHitBox = new Rectangle(obj.PositionX - obj.Width/2, obj.PositionY - obj.Height/2, obj.Width, obj.Height);
 
             return firstHitBox.IntersectsWith(secondHitBox);    
         }

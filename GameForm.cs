@@ -63,7 +63,7 @@ namespace FINKI_Adventures
             {
                 lblLevel.Text += "Бараки";
             }
-            else if (currentLevel == Constants.LEVELS.VP_ISPIT)
+            else if (currentLevel == Constants.LEVELS.ISPIT)
             {
                 lblLevel.Text += "Б2.2";
             }

@@ -10,7 +10,7 @@ namespace FINKI_Adventures
     {
         public Paper(int posX, int posY)
         {
-            this.Health = 250;
+            this.Health = 10;
             this.Damage = 20;
             this.Velocity = 10;
             this.PositionX = posX;

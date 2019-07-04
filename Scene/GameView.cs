@@ -18,11 +18,12 @@ namespace FINKI_Adventures
         public Scene gameScene { get; set; }
 
         // Scene Options
-        public int animationTick = 2; // animation tick in order to use it with the main timer
+        public int bossTick = 0; // animation tick in order to use it with the main timer
+        public int fireTick = 0; // animation tick in order to use it with the main timer
+        public bool canFire = true;
         public static Timer sceneTimer; // main game timer
         public bool isInGame = false; // variable for checking whether the player is playing or is in the pause menu
         public bool movingKeyPressed = false;
-        public bool fireKeyPressed = false;
 
         public GameView(GameForm gameForm)
         {
@@ -47,12 +48,6 @@ namespace FINKI_Adventures
 
         private void GameView_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         { 
-            // R is pressed
-            if (e.KeyCode == Keys.R)
-            {
-                gameScene.resetLevel();
-            }
-
             // Escape is pressed
             if (e.KeyCode == Keys.Escape)
             {
@@ -103,7 +98,12 @@ namespace FINKI_Adventures
                 // Space Key is pressed
                 if (e.KeyCode == Keys.Space)
                 {
-                    gameScene.createBullet(gameScene.player);
+                    if (canFire)
+                    {
+                        gameScene.createBullet(gameScene.player);
+                        canFire = false;
+                        fireTick = 5;
+                    }
                 }
 
                 // Tab Key is pressed
@@ -129,12 +129,39 @@ namespace FINKI_Adventures
                 gameScene.moveEnemies(); // Move the enemies if they are created
                 gameScene.createEnemies();
 
-                // Iterate through animation sprites
-                if (--animationTick <= 0)
+                if(!canFire)
                 {
-                    AllAnimations.nextImage();
-                    animationTick = 2;
+                    fireTick -= 1;
+                    if(fireTick <= 0)
+                    {
+                        canFire = true;
+                    }
                 }
+
+                if(gameScene.currentLevel == Constants.LEVELS.ISPIT)
+                {
+                    bossTick++;
+                    if (bossTick >= 40)
+                    {
+                        bossTick = 0;
+                        gameScene.gameBoss.targetLocation = Constants.BossTargetLocations[Constants.randomGenerator.Next(4)];
+                        gameScene.createBossKids();
+                    }
+                    if(bossTick % 10 == 0)
+                    {
+                        gameScene.gameBoss.Animation.nextImage();
+                    }
+
+                    if (gameScene.gameBoss.IsDead)
+                    {
+                        gameScene.restartGame();
+                        openMenu();
+                        MessageBox.Show("Колега, успешно го положивте испитот!");
+                    }
+                }
+
+                // Iterate through animation sprites
+                AllAnimations.nextImage();
 
                 if(movingKeyPressed)
                 {
@@ -142,7 +169,6 @@ namespace FINKI_Adventures
                     if(gameScene.enemies.Count == 0 && gameScene.playerAtEnd())
                     {
                         gameScene.changeLevel(gameScene.currentLevel + 1);
-                        gameScene.resetLevel();
                     }
                 }
 
@@ -151,8 +177,9 @@ namespace FINKI_Adventures
                 {
                     btn_continue.Enabled = false;
                     btn_continue.BackgroundImage = Properties.Resources.btn_ProdolziDisabled;
-                    gameScene.resetLevel();
+                    gameScene.restartGame();
                     openMenu();
+                    MessageBox.Show("Жалам колега, не успеавте да го положивте испитот!");
                 }
 
                 //Collision detection removal of enemies
@@ -165,7 +192,7 @@ namespace FINKI_Adventures
         {
             btn_continue.Enabled = false;
             btn_continue.BackgroundImage = Properties.Resources.btn_ProdolziDisabled;
-            gameScene.resetLevel();
+            gameScene.restartGame();
             closeMenu();
         }
 
@@ -194,6 +221,20 @@ namespace FINKI_Adventures
             // Repaint the main game panel (scene)
             Graphics g = e.Graphics;
             gameScene.Draw(g);
+
+            StringFormat sf = new StringFormat();
+            sf.LineAlignment = StringAlignment.Center;
+            sf.Alignment = StringAlignment.Center;
+
+            String s = "(";
+            for(int i=0; i<fireTick; i++)
+            {
+                s += "-";
+            }
+            s += ")";
+            if (fireTick == 0) s = "";
+            g.DrawString(s, new Font("Arial", 15), new SolidBrush(Color.DarkMagenta),
+                new Point(gameScene.player.PositionX, gameScene.player.PositionY + gameScene.player.Height/2 + 10), sf);
         }
 
         private void btn_Iskluci_Click(object sender, EventArgs e)
@@ -211,7 +252,6 @@ namespace FINKI_Adventures
                 movingKeyPressed = false;
                 gameScene.player.updateAnimation();
             }
-            Console.WriteLine(e.KeyCode + " RELEASED");
         }
     }
 }

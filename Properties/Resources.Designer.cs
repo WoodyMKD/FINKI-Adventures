@@ -63,6 +63,16 @@ namespace FINKI_Adventures.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap B22 {
+            get {
+                object obj = ResourceManager.GetObject("B22", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap baraki_vlez {
             get {
                 object obj = ResourceManager.GetObject("baraki_vlez", resourceCulture);
@@ -156,6 +166,56 @@ namespace FINKI_Adventures.Properties {
         internal static System.Drawing.Bitmap book9 {
             get {
                 object obj = ResourceManager.GetObject("book9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boss_as {
+            get {
+                object obj = ResourceManager.GetObject("boss_as", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boss_ds {
+            get {
+                object obj = ResourceManager.GetObject("boss_ds", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boss_empty {
+            get {
+                object obj = ResourceManager.GetObject("boss_empty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boss_gm {
+            get {
+                object obj = ResourceManager.GetObject("boss_gm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boss_sl {
+            get {
+                object obj = ResourceManager.GetObject("boss_sl", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

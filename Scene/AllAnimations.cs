@@ -24,6 +24,10 @@ namespace FINKI_Adventures
         // Paper enemy Animations
         public static Animation paper;
 
+
+        // Paper enemy Animations
+        public static Animation boss;
+
         public static void InitializeAnimations()
         {
             //Main character animation initialization
@@ -69,6 +73,18 @@ namespace FINKI_Adventures
 
             paper = new Animation(new Bitmap[] {
                 Properties.Resources.paper //sprite should be replaced with multiple paper sprites
+            });
+
+            boss = new Animation(new Bitmap[] {
+                Properties.Resources.boss_empty,
+                Properties.Resources.boss_sl,
+                Properties.Resources.boss_empty,
+                Properties.Resources.boss_as,
+                Properties.Resources.boss_empty,
+                Properties.Resources.boss_ds,
+                Properties.Resources.boss_empty,
+                Properties.Resources.boss_gm,
+                Properties.Resources.boss_empty
             });
         }
 

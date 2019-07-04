@@ -22,9 +22,6 @@ namespace FINKI_Adventures
         {
             // Draw the current animation sprite
             g.DrawImage(spriteImages[index], x, y, width, height);
-
-            if (GameSettings.showHitBoxes)
-                g.DrawRectangle(new Pen(Color.Black), x, y, width, height);
         }
 
         public void nextImage()
