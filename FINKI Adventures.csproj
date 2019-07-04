@@ -169,5 +169,44 @@
   <ItemGroup>
     <None Include="Resources\paper.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_iskluci.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_ProdolziDisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down_left_leg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down_right_leg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left_left_leg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left_right_leg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right_left_leg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right_right_leg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up_left_leg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up_right_leg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baraki_vlez.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulet.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bullet.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

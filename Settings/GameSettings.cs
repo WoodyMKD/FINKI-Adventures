@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 namespace FINKI_Adventures
 {
     public static class GameSettings
-    {   
+    {
         // Map Settings
         public static int mapLowerBoundY { get; set; }
         public static int mapUpperBoundY { get; set; }
+        public static int wallBounds { get; set; }
+        public static bool mapHasWalls { get; set; }
 
         // Game Settings
         public static bool showHitBoxes { get; set; }

@@ -17,7 +17,7 @@ namespace FINKI_Adventures
         public enum LEVELS
         {
             KAMPUS_DVOR = 1,
-            BARAKI = 2,
+            BARAKI_VLEZ = 2,
             VP_ISPIT = 3
         }
 

@@ -21,6 +21,8 @@ namespace FINKI_Adventures
         public int animationTick = 2; // animation tick in order to use it with the main timer
         public static Timer sceneTimer; // main game timer
         public bool isInGame = false; // variable for checking whether the player is playing or is in the pause menu
+        public bool movingKeyPressed = false;
+        public bool fireKeyPressed = false;
 
         public GameView(GameForm gameForm)
         {
@@ -44,7 +46,7 @@ namespace FINKI_Adventures
         }
 
         private void GameView_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
+        { 
             // R is pressed
             if (e.KeyCode == Keys.R)
             {
@@ -60,7 +62,7 @@ namespace FINKI_Adventures
                 } 
                 else
                 {
-                    closeMenu();
+                    if(btn_continue.Enabled) closeMenu();
                 }
             }
 
@@ -69,25 +71,33 @@ namespace FINKI_Adventures
                 // Left Arrow Key is pressed
                 if (e.KeyCode == Keys.Left || e.KeyCode == Keys.A)
                 {
-                    gameScene.MovePlayer(Constants.DIRECTIONS.LEFT);
+                    gameScene.player.Direction = Constants.DIRECTIONS.LEFT;
+                    if (gameScene.player.Direction != Constants.DIRECTIONS.LEFT) gameScene.MovePlayer();
+                    movingKeyPressed = true;
                 }
 
                 // Right Arrow Key is pressed
                 if (e.KeyCode == Keys.Right || e.KeyCode == Keys.D)
                 {
-                    gameScene.MovePlayer(Constants.DIRECTIONS.RIGHT);
+                    gameScene.player.Direction = Constants.DIRECTIONS.RIGHT;
+                    if (gameScene.player.Direction != Constants.DIRECTIONS.RIGHT) gameScene.MovePlayer();
+                    movingKeyPressed = true;
                 }
 
                 // Up Arrow Key is pressed
                 if (e.KeyCode == Keys.Up || e.KeyCode == Keys.W)
                 {
-                    gameScene.MovePlayer(Constants.DIRECTIONS.UP);
+                    gameScene.player.Direction = Constants.DIRECTIONS.UP;
+                    if (gameScene.player.Direction != Constants.DIRECTIONS.UP) gameScene.MovePlayer();
+                    movingKeyPressed = true;
                 }
 
                 // Down Arrow Key is pressed
                 if (e.KeyCode == Keys.Down || e.KeyCode == Keys.S)
                 {
-                    gameScene.MovePlayer(Constants.DIRECTIONS.DOWN);
+                    gameScene.player.Direction = Constants.DIRECTIONS.DOWN;
+                    if (gameScene.player.Direction != Constants.DIRECTIONS.DOWN) gameScene.MovePlayer();
+                    movingKeyPressed = true;
                 }
 
                 // Space Key is pressed
@@ -108,10 +118,12 @@ namespace FINKI_Adventures
         {
             this.Refresh();
 
-
             if(isInGame)
             {
-                gameScene.moveMap(); // Scroll the map vertically
+                btn_continue.Enabled = true;
+                btn_continue.BackgroundImage = Properties.Resources.btn_continue;
+
+                gameScene.moveMap(); // Scroll the map vertically]
 
                 gameScene.moveBullets(); // Move current bullets on map
                 gameScene.moveEnemies(); // Move the enemies if they are created
@@ -124,9 +136,21 @@ namespace FINKI_Adventures
                     animationTick = 2;
                 }
 
+                if(movingKeyPressed)
+                {
+                    gameScene.MovePlayer();
+                    if(gameScene.enemies.Count == 0 && gameScene.playerAtEnd())
+                    {
+                        gameScene.changeLevel(gameScene.currentLevel + 1);
+                        gameScene.resetLevel();
+                    }
+                }
+
                 // If the map has "eaten" the player or the player died
                 if (gameScene.player.PositionY > GameSettings.mapLowerBoundY || gameScene.player.Health <= 0)
                 {
+                    btn_continue.Enabled = false;
+                    btn_continue.BackgroundImage = Properties.Resources.btn_ProdolziDisabled;
                     gameScene.resetLevel();
                     openMenu();
                 }
@@ -139,6 +163,8 @@ namespace FINKI_Adventures
 
         private void btn_newgame_Click(object sender, EventArgs e)
         {
+            btn_continue.Enabled = false;
+            btn_continue.BackgroundImage = Properties.Resources.btn_ProdolziDisabled;
             gameScene.resetLevel();
             closeMenu();
         }
@@ -168,6 +194,24 @@ namespace FINKI_Adventures
             // Repaint the main game panel (scene)
             Graphics g = e.Graphics;
             gameScene.Draw(g);
+        }
+
+        private void btn_Iskluci_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void GameView_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.W ||
+                e.KeyCode == Keys.Down || e.KeyCode == Keys.S ||
+                e.KeyCode == Keys.Left || e.KeyCode == Keys.A ||
+                e.KeyCode == Keys.Right || e.KeyCode == Keys.D)
+            {
+                movingKeyPressed = false;
+                gameScene.player.updateAnimation();
+            }
+            Console.WriteLine(e.KeyCode + " RELEASED");
         }
     }
 }

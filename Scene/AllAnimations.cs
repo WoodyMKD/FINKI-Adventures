@@ -28,19 +28,23 @@ namespace FINKI_Adventures
         {
             //Main character animation initialization
             main_up = new Animation(new Bitmap[] {
-                Properties.Resources.up
+                Properties.Resources.up_left_leg,
+                Properties.Resources.up_right_leg
             });
 
             main_down = new Animation(new Bitmap[] {
-                Properties.Resources.down
+                Properties.Resources.down_left_leg,
+                Properties.Resources.down_right_leg
             });
 
             main_left = new Animation(new Bitmap[] {
-                Properties.Resources.left
+                Properties.Resources.left_left_leg,
+                Properties.Resources.left_right_leg
             });
 
             main_right = new Animation(new Bitmap[] {
-                Properties.Resources.right
+                Properties.Resources.right_left_leg,
+                Properties.Resources.right_right_leg
             });
 
 

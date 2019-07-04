@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FINKI_Adventures
@@ -17,21 +14,18 @@ namespace FINKI_Adventures
 
         // Current Game State
         private Panel Map { get; set; }
-        private Bitmap currentMap { get; set; }
         public Constants.LEVELS currentLevel { get; set; }
 
         public Scene(Panel Map)
         {
             // Initialize visual object variables
-            player = new Player();
-            activeBullets = new List<Bullet>();
-            enemies = new List<Enemy>();
+            this.player = new Player();
+            this.activeBullets = new List<Bullet>();
+            this.enemies = new List<Enemy>();
 
             // Initialize the starting game state
             this.Map = Map;
-            this.currentMap = Properties.Resources.kampus_dvor;
-            this.currentLevel = Constants.LEVELS.KAMPUS_DVOR;
-            this.Map.BackgroundImage = currentMap;
+            changeLevel(Constants.LEVELS.KAMPUS_DVOR);
 
             // Update settings
             GameSettings.mapLowerBoundY = 1500; // Helper variable to track the map
@@ -53,6 +47,27 @@ namespace FINKI_Adventures
             foreach (Enemy enemy in enemies)
             {
                 enemy.Animate(g);
+            }
+        }
+
+        public void changeLevel(Constants.LEVELS level)
+        {
+            if(level == Constants.LEVELS.KAMPUS_DVOR)
+            {
+                GameSettings.mapHasWalls = false;
+                GameSettings.wallBounds = 0;
+                this.Map.BackgroundImage = Properties.Resources.kampus_dvor;
+                this.currentLevel = Constants.LEVELS.KAMPUS_DVOR;
+            } else if(level == Constants.LEVELS.BARAKI_VLEZ)
+            {
+                GameSettings.mapHasWalls = true;
+                GameSettings.wallBounds = 150;
+                this.Map.BackgroundImage = Properties.Resources.baraki_vlez;
+                this.currentLevel = Constants.LEVELS.BARAKI_VLEZ;
+            }
+            else if(level == Constants.LEVELS.VP_ISPIT)
+            {
+
             }
         }
 
@@ -91,21 +106,23 @@ namespace FINKI_Adventures
         {
             if (GameSettings.mapUpperBoundY > 0)
             {
-                if (currentLevel == Constants.LEVELS.KAMPUS_DVOR)
+                int enemyCount = 0;
+                if (currentLevel == Constants.LEVELS.KAMPUS_DVOR) enemyCount = 2;
+                else if (currentLevel == Constants.LEVELS.BARAKI_VLEZ) enemyCount = 3;
+                else if (currentLevel == Constants.LEVELS.VP_ISPIT) enemyCount = 4;
+                
+                if (enemies.Count < enemyCount)
                 {
-                    if (enemies.Count < 2)
-                    {
-                        int randomX = Constants.randomGenerator.Next(0, 1280);
-                        int type = Constants.randomGenerator.Next(0, 2);
+                    int randomX = Constants.randomGenerator.Next(0, 1280);
+                    int type = Constants.randomGenerator.Next(0, 2);
 
-                        if (type == 0)
-                        {
-                            this.enemies.Add(new Book(randomX, GameSettings.mapUpperBoundY - 100));
-                        }
-                        else
-                        {
-                            this.enemies.Add(new Paper(randomX, GameSettings.mapUpperBoundY - 100));
-                        }
+                    if (type == 0)
+                    {
+                        this.enemies.Add(new Book(randomX, GameSettings.mapUpperBoundY - 100));
+                    }
+                    else
+                    {
+                        this.enemies.Add(new Paper(randomX, GameSettings.mapUpperBoundY - 100));
                     }
                 }
             }
@@ -146,6 +163,28 @@ namespace FINKI_Adventures
             }
         }
 
+        public bool playerAtEnd()
+        {
+            if(currentLevel == Constants.LEVELS.KAMPUS_DVOR)
+            {
+                if ((player.PositionX >= 0 && player.PositionX <= 10) &&
+                    (player.PositionY > 260 && player.PositionY < 540))
+                {
+                    return true;
+                }
+            }
+            else if (currentLevel == Constants.LEVELS.BARAKI_VLEZ)
+            {
+                if ((player.PositionX >= 150 && player.PositionX <= 160) &&
+                    (player.PositionY > 280 && player.PositionY < 415))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public void moveMap()
         {
             if (Map.Location.Y <= 0) // if it didn't reach the end
@@ -154,12 +193,12 @@ namespace FINKI_Adventures
                 Map.Location = new Point(Map.Location.X, Map.Location.Y + 2);
                 GameSettings.mapLowerBoundY -= 2;
                 GameSettings.mapUpperBoundY -= 2;
-            }
+            } 
         }
 
         public void resetLevel()
         {
-            Map.BackgroundImage = currentMap;
+            changeLevel(currentLevel);
             Map.Location = new Point(0, -780);
             player.resetPosition();
 
@@ -171,9 +210,9 @@ namespace FINKI_Adventures
             GameSettings.mapUpperBoundY = 780;
         }
 
-        public void MovePlayer(Constants.DIRECTIONS direction)
+        public void MovePlayer()
         {
-            player.Move(direction);
+            player.Move();
         }
     }
 }

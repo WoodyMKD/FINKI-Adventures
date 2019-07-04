@@ -19,14 +19,16 @@ namespace FINKI_Adventures
         {
             // Object is considered in map if 50% of the height of the body is inside the map 
             float objectVerticalBound = 0.5f * Height;
+            int wallBounds = 0;
+            if (GameSettings.mapHasWalls) wallBounds = GameSettings.wallBounds;
             
-            if (PositionY > GameSettings.mapUpperBoundY - objectVerticalBound)
+            if (PositionY > (GameSettings.mapUpperBoundY - objectVerticalBound))
             {
-                if (PositionY < GameSettings.mapLowerBoundY + objectVerticalBound)
+                if (PositionY < (GameSettings.mapLowerBoundY + objectVerticalBound))
                 {
-                    if (PositionX > Constants.mapLeftBound)
+                    if (PositionX > (Constants.mapLeftBound + wallBounds))
                     {
-                        if(PositionX < Constants.mapRightBound)
+                        if(PositionX < (Constants.mapRightBound - wallBounds))
                         {
                             return true;
                         } return false;

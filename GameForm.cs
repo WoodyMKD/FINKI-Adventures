@@ -59,6 +59,14 @@ namespace FINKI_Adventures
             {
                 lblLevel.Text += "Кампус двор";
             }
+            else if (currentLevel == Constants.LEVELS.BARAKI_VLEZ)
+            {
+                lblLevel.Text += "Бараки";
+            }
+            else if (currentLevel == Constants.LEVELS.VP_ISPIT)
+            {
+                lblLevel.Text += "Б2.2";
+            }
         }
     }
 }

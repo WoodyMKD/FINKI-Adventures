@@ -24,69 +24,73 @@ namespace FINKI_Adventures
             this.Direction = Constants.DIRECTIONS.UP;
         }
 
-        public void Move(Constants.DIRECTIONS direction)
+        public void Move()
         {
-            if (direction == Constants.DIRECTIONS.LEFT)
+            int wallBounds = 0;
+            if (GameSettings.mapHasWalls) wallBounds = GameSettings.wallBounds;
+
+            if (Direction == Constants.DIRECTIONS.LEFT)
             {
-                if (PositionX > Constants.mapLeftBound)
+                if (PositionX > Constants.mapLeftBound + wallBounds)
                 {
                     this.PositionX -= 10;
-                    Direction = Constants.DIRECTIONS.LEFT;
-                    updateAnimation();
                 }
             }
 
-            if (direction == Constants.DIRECTIONS.RIGHT)
+            if (Direction == Constants.DIRECTIONS.RIGHT)
             {
-                if (PositionX < Constants.mapRightBound)
+                if (PositionX < Constants.mapRightBound - wallBounds)
                 {
                     this.PositionX += 10;
-                    Direction = Constants.DIRECTIONS.RIGHT;
-                    updateAnimation();
                 }
             }
 
-            if (direction == Constants.DIRECTIONS.UP)
+            if (Direction == Constants.DIRECTIONS.UP)
             {
-                if (PositionY > GameSettings.mapUpperBoundY)
+                if (!GameSettings.mapHasWalls && PositionY > GameSettings.mapUpperBoundY ||
+                    GameSettings.mapHasWalls && PositionY > wallBounds && PositionY > GameSettings.mapUpperBoundY)
                 {
                     this.PositionY -= 10;
-                    Direction = Constants.DIRECTIONS.UP;
-                    updateAnimation();
                 }
             }
 
-            if (direction == Constants.DIRECTIONS.DOWN)
+            if (Direction == Constants.DIRECTIONS.DOWN)
             {
-                this.PositionY += 10;
-                Direction = Constants.DIRECTIONS.DOWN;
-                updateAnimation();
+                if (GameSettings.mapHasWalls && PositionY < 1500 - wallBounds)
+                {
+                    this.PositionY += 10;
+                }
+                else if(!GameSettings.mapHasWalls)
+                {
+                    this.PositionY += 10;
+                }
             }
+
+            updateAnimation();
         }
 
         public void updateAnimation()
         {
-            Animation prevAnimation = Animation;
-
-            if(Direction == Constants.DIRECTIONS.LEFT)
+            if(Direction == Constants.DIRECTIONS.LEFT && Animation != AllAnimations.main_left)
                 Animation = AllAnimations.main_left;
-            else if (Direction == Constants.DIRECTIONS.RIGHT)
+            else if (Direction == Constants.DIRECTIONS.RIGHT && Animation != AllAnimations.main_right)
                 Animation = AllAnimations.main_right;
-            else if (Direction == Constants.DIRECTIONS.UP)
+            else if (Direction == Constants.DIRECTIONS.UP && Animation != AllAnimations.main_up)
                 Animation = AllAnimations.main_up;
-            else if (Direction == Constants.DIRECTIONS.DOWN)
+            else if (Direction == Constants.DIRECTIONS.DOWN && Animation != AllAnimations.main_down)
                 Animation = AllAnimations.main_down;
-
-            if(prevAnimation != Animation)
+            
+            if (Animation.isAnimFinished())
             {
                 Animation.Restart();
-            } 
+            }
             else
             {
-                if (Animation.isAnimFinished())
-                {
-                    Animation.Restart();
-                }
+
+                AllAnimations.main_up.nextImage();
+                AllAnimations.main_down.nextImage();
+                AllAnimations.main_left.nextImage();
+                AllAnimations.main_right.nextImage();
             }
         }
 
