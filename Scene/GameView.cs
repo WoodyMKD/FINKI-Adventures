@@ -198,7 +198,7 @@ namespace FINKI_Adventures
                     MessageBox.Show("Жалам колега, не успеавте да го положивте испитот!");
                 }
 
-                //Collision detection removal of enemies
+                //Collision detection removal of enemies and bullets
                 gameScene.enemies.RemoveAll(enemy => enemy.IsDead);
                 gameScene.activeBullets.RemoveAll(b => b.RemoveMark && b.Animation.isAnimFinished());
             }
