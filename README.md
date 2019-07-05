@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="600" height="200" src="https://github.com/WoodyMKD/FINKI-Adventures/blob/master/Screenshots/logo.png?raw=true">
+</p>
+
 #  FINKI Adventures 
 Windows Forms Project for the course Visual Programming by: 
 - *Stefan Todorovski (171511)*
@@ -11,10 +15,10 @@ Windows Forms Project for the course Visual Programming by:
   Додека играчот прогресира низ нивоата на играта, тежината се зголемува така што секое ниво располага со поголем број непријатели од претходното, се додека играчот не пристигне до крајното ниво – испитот, каде се соочува еден непријател кој е потежок за совладување. Целта на играчот е да ги совлада сите непријатели додека не го најде излезот на нивото и да транзитира во наредното ниво. 
 
 
-## 2. Упатство за користење / играње :question:
+## 2. Упатство за користење / играње :grey_question:
   На почетокот имаме почетно мени кое ни дозволува да започнеме нова игра или да продолжиме од каде што сме застанале претходно. Откако ќе се кликне едно од овие копчиња се прикажува мапата и играта започнува. Играчот се придвижува со помош на навигациските копчиња или на копчињата: (W,A,S,D), а испукува од пушката со помош на копчето (Space). За да напредува во нивоата, играчот треба да ги елеменира сите непријатели и да го најде патот до следното ниво кое е означено на самата мапа и меѓувремено да пази да не биде “изеден” од мапата која што се движи.
-![Screenshot1](https://github.com/WoodyMKD/FINKI-Adventures/blob/master/Screenshots/screenshot1.png?raw=true)
-![Screenshot2](https://github.com/WoodyMKD/FINKI-Adventures/blob/master/Screenshots/screenshot2.png?raw=true)
+![Screenshot1](https://github.com/WoodyMKD/FINKI-Adventures/blob/master/Screenshots/Screenshot1.png?raw=true)
+![Screenshot2](https://github.com/WoodyMKD/FINKI-Adventures/blob/master/Screenshots/Screenshot2.png?raw=true)
 Со притискање на копчето (ESC) се отвора почетното мени, а истотака имплементирана е Debug функција на (TAB) со која се прикажуваат hitbox границите на објектите со црвена боја.
 
 ## 3. Опис на решението на проблемот
