@@ -1,8 +1,8 @@
 <p align="center">
-  <img width="600" height="200" src="https://github.com/WoodyMKD/FINKI-Adventures/blob/master/Screenshots/logo.png?raw=true">
+  <img href="#" src="https://github.com/WoodyMKD/FINKI-Adventures/blob/master/Screenshots/logo.png?raw=true">
 </p>
 
-#  FINKI Adventures 
+#  FINKI Adventures :video_game: 
 Windows Forms Project for the course Visual Programming by: 
 - *Stefan Todorovski (171511)*
 - *Metodija Novkovski (171529)*
@@ -21,7 +21,7 @@ Windows Forms Project for the course Visual Programming by:
 ![Screenshot2](https://github.com/WoodyMKD/FINKI-Adventures/blob/master/Screenshots/Screenshot2.png?raw=true)
 Со притискање на копчето (ESC) се отвора почетното мени, а истотака имплементирана е Debug функција на (TAB) со која се прикажуваат hitbox границите на објектите со црвена боја.
 
-## 3. Опис на решението на проблемот
+## 3. Опис на решението на проблемот :bookmark_tabs:
 ### 3.1. Генерална структура на проектот - класи, форми, контроли
 Како инспирација и идеја за дизајнот на структурата на проектот за играта следевме примери изработени во C#, но и наши претходни проекти со кои сме работеле во истиот програмски јазик, но на други платформи. Структурата се состои од следните класи:
 - GameForm.cs – главна форма која е еден вид визуелна рамка за играта која го зафаќа целиот екран со цел да му се овозможи на играчот да се внесе целосно во светот на играта без притоа да му пречат други елементи кои се дел од работната површина или отворените прозори на неговиот компјутер. Ги содржи главните информации за играта како: тековното ниво, поените и здравјето на играчот, како и неколку главни упатства за користење на апликацијата. 
