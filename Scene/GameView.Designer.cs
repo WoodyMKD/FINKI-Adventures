@@ -29,16 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameView));
-            this.sceneControl = new System.Windows.Forms.Panel();
+            this.sceneControl = new System.Windows.Forms.PictureBox();
             this.menuPanel = new System.Windows.Forms.Panel();
+            this.btn_HowToPlay = new System.Windows.Forms.PictureBox();
             this.btn_Iskluci = new System.Windows.Forms.PictureBox();
             this.btn_newgame = new System.Windows.Forms.PictureBox();
             this.btn_continue = new System.Windows.Forms.PictureBox();
+            this.imgHowToPlay = new System.Windows.Forms.PictureBox();
+            this.btnBack = new System.Windows.Forms.PictureBox();
             this.sceneControl.SuspendLayout();
             this.menuPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_HowToPlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Iskluci)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_newgame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_continue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHowToPlay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBack)).BeginInit();
             this.SuspendLayout();
             // 
             // sceneControl
@@ -55,6 +61,9 @@
             // 
             this.menuPanel.BackColor = System.Drawing.Color.Black;
             this.menuPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("menuPanel.BackgroundImage")));
+            this.menuPanel.Controls.Add(this.btnBack);
+            this.menuPanel.Controls.Add(this.imgHowToPlay);
+            this.menuPanel.Controls.Add(this.btn_HowToPlay);
             this.menuPanel.Controls.Add(this.btn_Iskluci);
             this.menuPanel.Controls.Add(this.btn_newgame);
             this.menuPanel.Controls.Add(this.btn_continue);
@@ -63,12 +72,24 @@
             this.menuPanel.Size = new System.Drawing.Size(1280, 720);
             this.menuPanel.TabIndex = 5;
             // 
+            // btn_HowToPlay
+            // 
+            this.btn_HowToPlay.BackgroundImage = global::FINKI_Adventures.Properties.Resources.btn_HowToPlay;
+            this.btn_HowToPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_HowToPlay.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_HowToPlay.Location = new System.Drawing.Point(515, 375);
+            this.btn_HowToPlay.Name = "btn_HowToPlay";
+            this.btn_HowToPlay.Size = new System.Drawing.Size(179, 60);
+            this.btn_HowToPlay.TabIndex = 3;
+            this.btn_HowToPlay.TabStop = false;
+            this.btn_HowToPlay.Click += new System.EventHandler(this.btn_HowToPlay_Click);
+            // 
             // btn_Iskluci
             // 
             this.btn_Iskluci.BackgroundImage = global::FINKI_Adventures.Properties.Resources.btn_iskluci;
             this.btn_Iskluci.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Iskluci.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Iskluci.Location = new System.Drawing.Point(515, 374);
+            this.btn_Iskluci.Location = new System.Drawing.Point(515, 456);
             this.btn_Iskluci.Name = "btn_Iskluci";
             this.btn_Iskluci.Size = new System.Drawing.Size(179, 60);
             this.btn_Iskluci.TabIndex = 2;
@@ -100,6 +121,31 @@
             this.btn_continue.TabStop = false;
             this.btn_continue.Click += new System.EventHandler(this.btn_continue_Click);
             // 
+            // imgHowToPlay
+            // 
+            this.imgHowToPlay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgHowToPlay.Image = global::FINKI_Adventures.Properties.Resources.instructionsBG;
+            this.imgHowToPlay.InitialImage = global::FINKI_Adventures.Properties.Resources.instructionsBG1;
+            this.imgHowToPlay.Location = new System.Drawing.Point(0, 0);
+            this.imgHowToPlay.Name = "imgHowToPlay";
+            this.imgHowToPlay.Size = new System.Drawing.Size(1280, 720);
+            this.imgHowToPlay.TabIndex = 4;
+            this.imgHowToPlay.TabStop = false;
+            this.imgHowToPlay.Visible = false;
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackgroundImage = global::FINKI_Adventures.Properties.Resources.btn_Back;
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.Location = new System.Drawing.Point(515, 610);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(179, 60);
+            this.btnBack.TabIndex = 5;
+            this.btnBack.TabStop = false;
+            this.btnBack.Visible = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // GameView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -112,19 +158,25 @@
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameView_PreviewKeyDown);
             this.sceneControl.ResumeLayout(false);
             this.menuPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btn_HowToPlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Iskluci)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_newgame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_continue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHowToPlay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBack)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel sceneControl;
+        private System.Windows.Forms.PictureBox sceneControl;
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.PictureBox btn_continue;
         private System.Windows.Forms.PictureBox btn_newgame;
         private System.Windows.Forms.PictureBox btn_Iskluci;
+        private System.Windows.Forms.PictureBox btn_HowToPlay;
+        private System.Windows.Forms.PictureBox imgHowToPlay;
+        private System.Windows.Forms.PictureBox btnBack;
     }
 }

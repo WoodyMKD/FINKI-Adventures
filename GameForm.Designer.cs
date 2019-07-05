@@ -151,8 +151,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(784, 50);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Притиснете \"R\" за да го рестартирате нивото | Притиснете \"ESC\" за да го отворите " +
-    "менито";
+            this.label2.Text = "Притиснете \"ESC\" за да го отворите / затворите главното менито";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTimer

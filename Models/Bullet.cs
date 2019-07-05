@@ -11,7 +11,6 @@ namespace FINKI_Adventures
     public class Bullet : VisualObject
     {
         public Constants.DIRECTIONS Direction { get; set; }
-        public Color Color { get; set; }
         public bool RemoveMark { get; set; }
         public int Velocity { get; set; }
 
@@ -23,7 +22,6 @@ namespace FINKI_Adventures
             this.Width = 25;
             this.Height = 25;
             Velocity = 20;
-            Color = Color.White;
             RemoveMark = false;
             Animation = AllAnimations.bullet;
         }

@@ -19,10 +19,10 @@ namespace FINKI_Adventures
         SoundPlayer enemyDead;
 
         // Current Game State
-        private Panel Map { get; set; }
+        private PictureBox Map { get; set; }
         public Constants.LEVELS currentLevel { get; set; }
 
-        public Scene(Panel Map)
+        public Scene(PictureBox Map)
         {
             // Initialize visual object variables
             this.player = new Player();

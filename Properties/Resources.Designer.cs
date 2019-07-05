@@ -223,9 +223,29 @@ namespace FINKI_Adventures.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btn_Back {
+            get {
+                object obj = ResourceManager.GetObject("btn_Back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btn_continue {
             get {
                 object obj = ResourceManager.GetObject("btn_continue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_HowToPlay {
+            get {
+                object obj = ResourceManager.GetObject("btn_HowToPlay", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -334,6 +354,26 @@ namespace FINKI_Adventures.Properties {
         internal static System.Drawing.Bitmap form_panel {
             get {
                 object obj = ResourceManager.GetObject("form_panel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap instructionsBG {
+            get {
+                object obj = ResourceManager.GetObject("instructionsBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap instructionsBG1 {
+            get {
+                object obj = ResourceManager.GetObject("instructionsBG1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

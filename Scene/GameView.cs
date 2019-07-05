@@ -36,6 +36,9 @@ namespace FINKI_Adventures
             InitializeComponent();
             this.DoubleBuffered = true;
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, sceneControl, new object[] { true });
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.DoubleBuffer, true);
 
             // Scene setup
             this.gameForm = gameForm;
@@ -164,9 +167,12 @@ namespace FINKI_Adventures
 
                     if (gameScene.gameBoss.IsDead)
                     {
+                        int score = gameScene.player.Score;
                         gameScene.restartGame();
                         openMenu();
-                        MessageBox.Show("Колега, успешно го положивте испитот!");
+                        btn_continue.Enabled = false;
+                        btn_continue.BackgroundImage = Properties.Resources.btn_ProdolziDisabled;
+                        MessageBox.Show("Колега, успешно го положивте испитот со вкупно " + score + " Поени!");
                     }
                 }
 
@@ -262,6 +268,19 @@ namespace FINKI_Adventures
                 movingKeyPressed = false;
                 gameScene.player.updateAnimation();
             }
+        }
+
+        private void btn_HowToPlay_Click(object sender, EventArgs e)
+        {
+            btnBack.Visible = true;
+            imgHowToPlay.Visible = true;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            imgHowToPlay.Visible = false;
+            btnBack.Visible = false;
+            this.Focus();
         }
     }
 }

@@ -47,6 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\EnemyModels\Boss.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Scene\AllAnimations.cs" />
     <Compile Include="Scene\Animation.cs" />
     <Compile Include="Models\EnemyModels\Book.cs" />
@@ -70,11 +75,6 @@
     <Compile Include="Models\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Scene\Scene.cs" />
     <Compile Include="Models\VisualObject.cs" />
     <EmbeddedResource Include="GameForm.resx">
@@ -228,13 +228,22 @@
     <None Include="Resources\B22.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ambience.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\enemyDead.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fire.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_HowToPlay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\instructionsBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\instructionsBG1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
